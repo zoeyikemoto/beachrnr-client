@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Review from './components/Review.jsx';
 
 class App extends React.Component {
 
@@ -11,6 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <p> TESTING </p>
+        <Review />
       </div>
     )
   }
@@ -18,4 +20,3 @@ class App extends React.Component {
 
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
