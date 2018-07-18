@@ -2,23 +2,46 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
+const ReviewItemDiv = styled.div`
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-bottom-style: solid;
+  border-bottom-color: grey;
+  border-width: 1px;
+`;
+
 const ReviewItemAvatar = styled.img`
-  width: 5%;
-  height: 5%;
+  width: 40px;
+  height: 40px;
   float: left;
   border-radius: 50%;
 `;
 
+const ReviewContent = styled.div`
+  clear: both;
+  height: 4.8em;
+  line-height: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const ReviewPerson = styled.span`
+  margin: 0.8em;
+  line-height: 1.3em;
+`;
+
 const ReviewItem = (props) => (
-  <div>
+  <ReviewItemDiv>
     <ReviewItemAvatar src={props.user_avatar} />
-    <span>{props.user_name}</span>
+    <ReviewPerson>{props.user_name}</ReviewPerson>
     <br></br>
-    <span>{props.review_date}</span>
-    <p style = {{'clear': 'both'}}>
+    <ReviewPerson>{props.review_date}</ReviewPerson>
+    <ReviewContent>
+      <p>
       {props.review_content}
-    </p>
-  </div>
+      </p>
+    </ReviewContent>
+  </ReviewItemDiv>
 );
 
 

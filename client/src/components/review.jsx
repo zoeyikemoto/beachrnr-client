@@ -5,6 +5,12 @@ import {reviewList, listingRatings} from '../data/mock-data-review.js';
 import ReviewItem from './Reviewitem.jsx';
 import styled from 'styled-components';
 
+
+const ReviewSection = styled.div`
+  margin: 20%;
+  width: 60%;
+`;
+
 const ReviewCount = styled.h2`
   float: left;
 `;
@@ -12,6 +18,11 @@ const ReviewCount = styled.h2`
 const ReviewPanel = styled.div`
   clear: both;
 `;
+
+const ReviewType = styled.span`
+  float: left;
+`;
+
 
 class Review extends React.Component {
   constructor(props) {
@@ -23,30 +34,29 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div>
-
+      <ReviewSection >
         <div>
           <ReviewCount>580 Reviews</ReviewCount>
           <ReactStars count={5} size={30} value ={5} color2={'#137269'} edit={false}/>
         </div>
 
         <ReviewPanel>
-          <span style={{'float': 'left'}}>Accuracy</span>
+          <ReviewType>Accuracy</ReviewType>
           <ReactStars count={5} size={24} value={listingRatings.Accuracy} color2={'#137269'} edit={false}/>
-          <span style={{'float': 'left'}}>Location</span>
+          <ReviewType>Location</ReviewType>
           <ReactStars count={5} size={24} value={listingRatings.Location} color2={'#137269'} edit={false}/>
-          <span style={{'float': 'left'}}>Communication</span>
+          <ReviewType>Communication</ReviewType>
           <ReactStars count={5} size={24} value={listingRatings.Communication} color2={'#137269'} edit={false}/>
-          <span style={{'float': 'left'}}>Check-in</span>
+          <ReviewType>Check-in</ReviewType>
           <ReactStars count={5} size={24} value={listingRatings.Checkin} color2={'#137269'} edit={false}/>
-          <span style={{'float': 'left'}}>Cleanliness</span>
+          <ReviewType>Cleanliness</ReviewType>
           <ReactStars count={5} size={24} value={listingRatings.Cleanliness} color2={'#137269'} edit={false}/>
-          <span style={{'float': 'left'}}>Value</span>
+          <ReviewType>Value</ReviewType>
           <ReactStars count={5} size={24} value={listingRatings.Value} color2={'#137269'} edit={false}/>
         </ReviewPanel>
 
         {reviewList.map(review => <ReviewItem key={review.review_id} user_avatar={review.user_avatar} user_name={review.user_name} review_date={review.review_date} review_content={review.review_content}/>)}
-      </div>
+      </ReviewSection>
       )
   }
 };
