@@ -1,6 +1,13 @@
 import React from 'react';
 import { listings } from '../../data/mockedDataSearch';
 import Suggestions from './Suggestions.jsx'
+import { Form } from 'semantic-ui-react'
+import styled from 'styled-components';
+
+const Div = styled.div`
+  width: 40%;
+  margin: 3% 5%;
+`;
 
 class Search extends React.Component {
   constructor(props) {
@@ -41,15 +48,19 @@ class Search extends React.Component {
  
   render() {
     return (
-      <form>
-        <input
-          placeholder="Destination..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-          onKeyPress={(e)=>{this.handleKeyPress(e, this.handleInputChange)}}
-        />
+      <Form>
+        <Div>
+          <Form.Field>
+            <input
+              placeholder="Destination..."
+              ref={input => this.search = input}
+              onChange={this.handleInputChange}
+              onKeyPress={(e)=>{this.handleKeyPress(e, this.handleInputChange)}}
+            />
+          </Form.Field>
+        </Div>
         <Suggestions results={this.state.results} />
-      </form>
+      </Form>
     )
   }
 }
