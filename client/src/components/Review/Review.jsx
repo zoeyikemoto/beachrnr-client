@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactStars from 'react-stars';
-import {reviewList, listingRatings} from '../data/mock-data-review.js';
+import {reviewList, listingRatings} from '../../data/mock-data-review.js';
 import ReviewItem from './Reviewitem.jsx';
 import styled from 'styled-components';
 
@@ -17,6 +17,7 @@ const ReviewCount = styled.h2`
 
 const ReviewPanel = styled.div`
   clear: both;
+  margin-bottom: 2em;
 `;
 
 const ReviewType = styled.span`
@@ -30,6 +31,14 @@ class Review extends React.Component {
     this.state = {
       'reviewList': reviewList
     }
+  }
+
+  componentDidMount() {
+    this.reportHandler = this.reportHandler.bind(this);
+  }
+
+  reportHandler(e) {
+    console.log('flag has been clicked');
   }
 
   render() {
@@ -55,7 +64,7 @@ class Review extends React.Component {
           <ReactStars count={5} size={24} value={listingRatings.Value} color2={'#137269'} edit={false}/>
         </ReviewPanel>
 
-        {reviewList.map(review => <ReviewItem key={review.review_id} user_avatar={review.user_avatar} user_name={review.user_name} review_date={review.review_date} review_content={review.review_content}/>)}
+        {reviewList.map(review => <ReviewItem key={review.review_id} user_avatar={review.user_avatar} user_name={review.user_name} review_date={review.review_date} review_content={review.review_content} reportHandler={this.reportHandler}/>)}
       </ReviewSection>
       )
   }

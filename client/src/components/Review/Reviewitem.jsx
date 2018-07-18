@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import reviewCss from '../../styles/review.css';
+import ModalModalExample from './Report.jsx';
 
 const ReviewItemDiv = styled.div`
   margin-top: 1em;
@@ -23,6 +25,7 @@ const ReviewContent = styled.div`
   line-height: 1.2em;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 1em;
 `;
 
 const ReviewPerson = styled.span`
@@ -30,10 +33,12 @@ const ReviewPerson = styled.span`
   line-height: 1.3em;
 `;
 
+
 const ReviewItem = (props) => (
   <ReviewItemDiv>
     <ReviewItemAvatar src={props.user_avatar} />
     <ReviewPerson>{props.user_name}</ReviewPerson>
+    <ModalModalExample />
     <br></br>
     <ReviewPerson>{props.review_date}</ReviewPerson>
     <ReviewContent>
@@ -41,6 +46,7 @@ const ReviewItem = (props) => (
       {props.review_content}
       </p>
     </ReviewContent>
+
   </ReviewItemDiv>
 );
 
