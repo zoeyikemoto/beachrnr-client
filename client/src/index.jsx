@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Review from './components/Review.jsx';
+import Search from './components/Search/Search.jsx';
 
 class App extends React.Component {
 
@@ -11,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p> TESTING </p>
+        <Search />
         <Review />
       </div>
     )
