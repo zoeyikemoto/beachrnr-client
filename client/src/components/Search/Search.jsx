@@ -51,7 +51,7 @@ class Search extends React.Component {
       <Form>
         <Div>
           <Form.Field>
-            <input
+            <input style={ {backgroundImage: 'url(searchIcon.png)', backgroundRepeat: 'no-repeat', paddingLeft: '40px'} }
               placeholder="Destination..."
               ref={input => this.search = input}
               onChange={this.handleInputChange}
