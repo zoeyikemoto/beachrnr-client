@@ -29,3 +29,4 @@ const details = {
 //export {singleListingDetails as listingDetails};
 //module.exports = details;
 export {details as details};
+
