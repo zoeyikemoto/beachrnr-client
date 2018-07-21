@@ -2,3 +2,34 @@
   float: right;
   margin-right: 1em;
 }
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: grey !important;
+}
+
+.pagination {
+  margin-top: 2em;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.reportForm {
+  height: 3em;
+}
+
+li {
+  list-style-type: none;
+  float: left;
+  margin-right: 1em;
+}
+
+a:hover {
+   cursor: pointer;
+   text-decoration: underline;
+}
+

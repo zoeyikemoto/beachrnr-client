@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import reviewCss from '../../styles/review.css';
-import ModalModalExample from './Report.jsx';
+import ReportModal from './Report.jsx';
 
 const ReviewItemDiv = styled.div`
   margin-top: 1em;
@@ -38,7 +38,7 @@ const ReviewItem = (props) => (
   <ReviewItemDiv>
     <ReviewItemAvatar src={props.user_avatar} />
     <ReviewPerson>{props.user_name}</ReviewPerson>
-    <ModalModalExample />
+    <ReportModal/>
     <br></br>
     <ReviewPerson>{props.review_date}</ReviewPerson>
     <ReviewContent>

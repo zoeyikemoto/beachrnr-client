@@ -1,17 +1,25 @@
-const reviewList = [{"user_id":14338,"user_name":"Darron Olson","review_id":89566,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/dmackerman/128.jpg","review_date":"2017-12-26","review_content":"Quos perspiciatis unde veritatis inventore nobis. Id officia eveniet labore. Nobis et possimus nihil aut. Et possimus aliquid debitis voluptas laborum delectus animi repellat assumenda. Voluptatibus reprehenderit neque."},
-{"user_id":93995,"user_name":"Aniyah Rodriguez","review_id":20797,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/iamkeithmason/128.jpg","review_date":"2018-04-26","review_content":"Quia ut pariatur voluptas quaerat eveniet aspernatur in et velit. Voluptatem quisquam est nihil occaecati a. Qui dolorem omnis in vel quia ullam sapiente numquam. Blanditiis labore nulla vel illum possimus. Modi quidem inventore sunt. Et praesentiumitaque distinctio iusto atque qui quae pariatur."},
-{"user_id":27385,"user_name":"Mr. Miguel Braun","review_id":16739,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/bartjo/128.jpg","review_date":"2018-01-07","review_content":"Ut blanditiis culpa voluptates molestiae eius ipsa rerum sit. Nesciunt nihil ducimus molestias itaque inventore debitis qui. Officia modi voluptatem eos sint aut aperiam voluptas. Ducimus quam occaecati qui excepturi recusandae id asperiores odit. Natus nemo tempore molestias iure autem. Rerum ipsum sint et eius blanditiis corrupti fugiat."},
-{"user_id":39970,"user_name":"Dr. Jakayla Jast","review_id":48358,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/lebinoclard/128.jpg","review_date":"2017-12-01","review_content":"Atque aspernatur et delectus blanditiis autem laborum ipsum placeat. Sed sit voluptas est dolorum incidunt iusto. Est adipisci ullam rem. Aut facere ipsam. Ducimus explicabo beatae dolore repudiandae dolores voluptatem aut. Magni rem porro."},
-{"user_id":90139,"user_name":"Mack Tromp","review_id":50957,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/katiemdaly/128.jpg","review_date":"2018-05-20","review_content":"Eveniet error optio omnis illo eligendi id repudiandae quidem blanditiis. Quia ut vel asperiores et. Dolorem dolor quaerat voluptates in eos nesciunt illum."},
-{"user_id":58133,"user_name":"Danial Murray","review_id":71378,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/jffgrdnr/128.jpg","review_date":"2017-07-22","review_content":"Quis exercitationem animi inventore corrupti dicta repellat quos eos omnis. Est eum quod blanditiis et amet quisquam mollitia. Quos similique qui. Consequuntur amet iste recusandae labore nobis. Autem reiciendis atque vel dolorem. Minima vel asperiores architecto officia dolores magni ad amet."},
-{"user_id":9669,"user_name":"Tara Hermiston","review_id":58096,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/supervova/128.jpg","review_date":"2017-10-19","review_content":"Omnis eum consequatur eos explicabo nam aperiam officia delectus. Aut iste at error aut. Autem dolores dignissimos quia et. Et numquam molestias sed. Quam quia aspernatur sint quo architecto ad quidem. Qui maxime totam quia eligendi inventore est error rerum et."},
-{"user_id":98653,"user_name":"Kiel Krajcik Jr.","review_id":65628,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mbilderbach/128.jpg","review_date":"2018-02-15","review_content":"Fugit blanditiis a utreiciendis assumenda. Provident velit est consequuntur libero sint reiciendis tempore. Nulla qui incidunt quaerat ratione aperiam. Nulla nam fugiat exercitationem corporis aspernatur architecto velit. Facere suscipit tenetur isteid natus blanditiis blanditiis vero."},
-{"user_id":5728,"user_name":"Mrs. Claire Emard","review_id":6741,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/joshhemsley/128.jpg","review_date":"2018-04-02","review_content":"Numquam et quae. Corrupti alias quo iusto culpa sit omnis atque cum quia. Sint illo doloremque fuga neque aspernatur repudiandae explicabo est. Nihil eos dolore deserunt nesciunt nobis. Suscipit aut quidem ut harum deleniti error veniam. Autem similique consectetur tempora excepturi et sit ut."},
-{"user_id":62733,"user_name":"Eli Hermann","review_id":23793,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/charliegann/128.jpg","review_date":"2017-09-26","review_content":"Nesciunt et placeat accusantium quam nihil dolorum libero dignissimos est. Perspiciatis placeat quia saepe. Dolores voluptates quos optio estet dolores cumque et."},
-{"user_id":4598,"user_name":"Ms. Lou Beahan","review_id":4111,"user_avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg","review_date":"2018-06-09","review_content":"Neque placeat ut odio rerum fuga ut animi. Et asperiores omnis. Debitis molestias modi voluptates quibusdam. Sit rerum sint aperiam dolorem aut magnam tenetur maxime eaque. Ea sed eaque. Nobis molestiae quo modi consequatur optio natus."}
-];
+import faker from 'faker';
+
+var randomName = faker.name.findName();
+var randomEmail = faker.internet.email();
+var randomCard = faker.helpers.createCard();
+
+var fullReviewList = [];
+for(var i = 0; i <=480; i++) {
+  let review = {
+    'user_id': faker.random.number(),
+    'user_name': faker.name.findName(),
+    'review_id': faker.random.number(),
+    'user_avatar': faker.image.avatar(),
+    'review_date': faker.date.past().toString().split(' ').slice(0,4).join(' '),
+    'review_content': faker.lorem.paragraph(),
+  };
+  fullReviewList.push(review);
+
+};
+
 
 const listingRatings = {"Accuracy":5,"Location":5,"Communication":5,"Checkin":5,"Cleanliness":5,"Value":5};
 
 
-export {reviewList as reviewList, listingRatings as listingRatings};
+export {fullReviewList as fullReviewList, listingRatings as listingRatings};
