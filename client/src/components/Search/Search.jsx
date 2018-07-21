@@ -24,9 +24,7 @@ class Search extends React.Component {
     this.setState({
       query: this.search.value
     }, () => {
-      if (this.state.query && this.state.query.length > 1) {
-        this.state.query.length % 2 === 0 ? this.getInfo(this.search.value) : '';
-      } 
+      this.state.query && this.state.query.length > 1 ? this.getInfo(this.search.value) : '';
     })
   }
 
@@ -40,7 +38,7 @@ class Search extends React.Component {
   getInfo(location) {
     let results = listings.filter(listing => 
       listing.unitAddress.toLowerCase().includes(location.toLowerCase())
-    )
+    );
     this.setState({
       results: results
     })
@@ -59,7 +57,13 @@ class Search extends React.Component {
             />
           </Form.Field>
         </Div>
-        <Suggestions results={this.state.results} />
+        {!this.state.query.length ? '' 
+          : (this.state.results.length > 0 
+            ? <Suggestions results={this.state.results} /> 
+            : <Div> No result found for the search criteria 
+            </Div>
+          )
+        }
       </Form>
     )
   }

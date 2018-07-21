@@ -53,6 +53,8 @@ const Suggestions = (props) => {
               {r.room_type.toUpperCase()}
               <span> · </span>
               {r.beds < 2 ? `${r.beds} BED` : `${r.beds} BEDS`}
+              <span> · </span>
+              {r.city}
             </HeaderSpan>
             <br />
             {r.unitName}
