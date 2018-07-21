@@ -1,0 +1,18 @@
+.DateInput {
+  width: calc(50% - 12px);
+}
+.DateInput_input {
+  font-size: 16px;
+  line-height: 16px;
+  padding-top: 14px;
+  padding-left: 14px;
+}
+.DateInput_fang {
+  top: 42px!important;
+}
+.DateRangePicker_picker {
+  top: 53px!important;
+}
+.CalendarMonth_table {
+  margin-top: 0.5rem;
+}

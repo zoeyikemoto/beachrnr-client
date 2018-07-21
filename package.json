@@ -16,7 +16,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "moment": "^2.22.2",
     "react": "^16.4.1",
+    "react-dates": "^17.1.1",
     "react-dom": "^16.4.1",
     "react-stars": "^2.2.5",
     "semantic-ui-react": "^0.82.0",

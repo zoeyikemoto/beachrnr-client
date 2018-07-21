@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Pagination from './Pagination.jsx';
 
 const ReviewSection = styled.div`
-  margin: 20%;
+  margin: 20px auto;
   width: 60%;
 `;
 

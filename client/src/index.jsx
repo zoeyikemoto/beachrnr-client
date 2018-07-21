@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Review from './components/Review/Review.jsx';
 import Search from './components/Search/Search.jsx';
 import ListingPage from './components/Details/ListingPage.jsx';
+import Booking from './components/Booking/Booking.jsx';
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
       <div>
         <Search />
         <ListingPage />
+        <Booking />
         <Review />
       </div>
     )
