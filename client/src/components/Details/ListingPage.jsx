@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { details } from '../../data/mockpagedetail.js';
 import style from '../../styles/listingdetails.css';
+import ListingDetails from './ListingDetails.jsx';
 
 
 class ListingPage extends React.Component {
@@ -22,21 +23,7 @@ class ListingPage extends React.Component {
 
   render(props) {
     return (
-      <div>
-        <img src = 'https://a0.muscache.com/im/pictures/50616050/43df6979_original.jpg'></img>
-        <div>
-          <h1>Beautiful Guest Suite for 2</h1>
-          <h3>Seattle, Washington</h3>
-        </div>
-        <div>
-          <h4>1 Bedroom  Condominium</h4>
-          <h4> $70.00 per night</h4>
-        </div>
-        <div>
-          <p>This lovely, modern room and ensuite bath is detached from the main house, so you can enjoy privacy and quiet. We are a 5 min drive from Ballard and a 15 min drive from downtown. Welcome to our quiet, safe neighborhood!</p>
-        </div>
-      </div>
-
+      <ListingDetails data={details} />
       )
   }
 };

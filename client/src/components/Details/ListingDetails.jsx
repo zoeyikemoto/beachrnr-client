@@ -8,7 +8,6 @@ class ListingDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: details
     }
   }
 
@@ -21,22 +20,22 @@ class ListingDetails extends React.Component {
   // }
 
   render(props) {
+    const data = this.props.data;
     return (
       <div>
-        <img src = 'https://a0.muscache.com/im/pictures/50616050/43df6979_original.jpg'></img>
+        <img src ={data.unitImage}></img>
         <div>
-          <h1>Beautiful Guest Suite for 2</h1>
-          <h3>Seattle, Washington</h3>
+          <h1>{data.unitName}</h1>
+          <h3>{data.city}, {data.state}</h3>
         </div>
         <div>
-          <h4>1 Bedroom  Condominium</h4>
-          <h4> $70.00 per night</h4>
+          <h4>{data.beds} Bedroom  {data.property_type}</h4>
+          <h4>{data.unitPrice} {data.priceModifier}</h4>
         </div>
         <div>
-          <p>This lovely, modern room and ensuite bath is detached from the main house, so you can enjoy privacy and quiet. We are a 5 min drive from Ballard and a 15 min drive from downtown. Welcome to our quiet, safe neighborhood!</p>
+          <p>{data.description_short}</p>
         </div>
       </div>
-
       )
   }
 };
