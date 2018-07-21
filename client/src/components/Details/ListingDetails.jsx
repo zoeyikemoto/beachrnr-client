@@ -1,8 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { details } from '../../data/mockpagedetail.js';
-import style from '../../styles/listingdetails.css';
+import styled from 'styled-components';
 
+const MainImage = styled.div`
+
+`;
+
+const MainContainer = styled.div`
+    width: 60%;
+    margin: 0 auto;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-width: 1px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+`;
+
+const Description = styled.div`
+  width: 80%;
+`;
 
 class ListingDetails extends React.Component {
   constructor(props) {
@@ -19,22 +36,30 @@ class ListingDetails extends React.Component {
   //   console.log('flag has been clicked');
   // }
 
+
   render(props) {
     const data = this.props.data;
     return (
       <div>
-        <img src ={data.unitImage}></img>
-        <div>
+        <MainImage style={ {
+          backgroundImage: 'url('+data.unitImage+')',
+          height: '500px',
+          width: '100%',
+          backgroundRepeat:'no-repeat',
+          backgroundSize: 'cover',
+          backgroundPosition: '50% 50%'
+        } }>
+
+        </MainImage>
+        <MainContainer>
           <h1>{data.unitName}</h1>
           <h3>{data.city}, {data.state}</h3>
-        </div>
-        <div>
           <h4>{data.beds} Bedroom  {data.property_type}</h4>
           <h4>{data.unitPrice} {data.priceModifier}</h4>
-        </div>
-        <div>
-          <p>{data.description_short}</p>
-        </div>
+          <Description>
+            <p>{data.description_short}</p>
+          </Description>
+        </MainContainer>
       </div>
       )
   }
