@@ -25,7 +25,4 @@ const details = {
       //cancellation_policy: tbd
       //about_neighborhood: tbd
 };
-//export details as listingDetails;
-//export {singleListingDetails as listingDetails};
-//module.exports = details;
 export {details as details};
