@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Pagination extends React.Component {
 
   constructor(props) {
@@ -71,22 +70,22 @@ class Pagination extends React.Component {
     }
 
     return (
-        <ul>
-            <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+        <ul className='pageList'>
+            <li className={pager.currentPage === 1 ? 'disabled page' : 'page'}>
                 <a onClick={() => this.setPage(1)} >First</a>
             </li>
-            <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+            <li className={pager.currentPage === 1 ? 'disabled page' : 'page'}>
                 <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
             </li>
             {pager.pages.map((page, index) =>
-                <li key={index} className={pager.currentPage === page ? 'active' : ''}>
+                <li key={index} className={pager.currentPage === page ? 'active page' : 'page'}>
                     <a onClick={() => this.setPage(page)} href='#reviewtop'>{page}</a>
                 </li>
             )}
-            <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+            <li className={pager.currentPage === pager.totalPages ? 'disabled page' : 'page'}>
                 <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
             </li>
-            <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+            <li className={pager.currentPage === pager.totalPages ? 'disabled page' : 'page'}>
                 <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
             </li>
         </ul>

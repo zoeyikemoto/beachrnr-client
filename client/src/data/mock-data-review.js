@@ -5,7 +5,7 @@ var randomEmail = faker.internet.email();
 var randomCard = faker.helpers.createCard();
 
 var fullReviewList = [];
-for(var i = 0; i <=480; i++) {
+for(var i = 0; i <=580; i++) {
   let review = {
     'user_id': faker.random.number(),
     'user_name': faker.name.findName(),

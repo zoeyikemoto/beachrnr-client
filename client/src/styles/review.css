@@ -22,14 +22,17 @@
   height: 3em;
 }
 
-li {
-  list-style-type: none;
-  float: left;
-  margin-right: 1em;
-}
-
 a:hover {
    cursor: pointer;
    text-decoration: underline;
 }
 
+.page {
+  display: inline-block;
+  list-style-type: none;
+  padding-right: 20px !important;
+}
+
+.pageList{
+  text-align: center;
+}
