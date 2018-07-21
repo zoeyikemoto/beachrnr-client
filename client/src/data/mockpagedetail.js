@@ -1,5 +1,5 @@
 //const details = whatver
-const singleListingDetails = {
+module.exports = {
       id: 222989,
       unitName: 'Beautiful Guest Suite for 2',
       unitImage: 'https://a0.muscache.com/im/pictures/50616050/43df6979_original.jpg',
@@ -26,4 +26,4 @@ const singleListingDetails = {
       //about_neighborhood: tbd
 };
 //export details as listingDetails;
-export singleListingDetails as listingDetails;
+//export {singleListingDetails as listingDetails};
