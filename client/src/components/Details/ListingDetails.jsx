@@ -34,6 +34,7 @@ class ListingDetails extends React.Component {
 
 
 
+
   render(props) {
     const data = this.props.data;
     return (

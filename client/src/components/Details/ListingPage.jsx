@@ -6,7 +6,6 @@ import ListingDetails from './ListingDetails.jsx';
 import styled from 'styled-components';
 
 
-
 class ListingPage extends React.Component {
   constructor(props) {
     super(props);
