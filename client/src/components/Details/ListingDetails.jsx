@@ -31,13 +31,7 @@ class ListingDetails extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.reportHandler = this.reportHandler.bind(this);
-  // }
 
-  // reportHandler(e) {
-  //   console.log('flag has been clicked');
-  // }
 
 
   render(props) {
@@ -145,3 +139,11 @@ export default ListingDetails;
 //       //about_neighborhood: tbd
 // };
 // //expor
+
+  //   this.reportHandler = this.reportHandler.bind(this);
+  // }
+  // componentDidMount() {
+  // reportHandler(e) {
+
+  //   console.log('flag has been clicked');
+  // }
