@@ -1,4 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
+
+
+const PageList = styled.ul`
+  text-align: center;
+`;
+
+const PageLink = styled.a`
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;}
+`;
+
+const PageNumber = styled.li`
+  pointer-events: ${props => (props.disabled ? 'none': '')};
+  cursor: ${props => (props.disabled ? 'default': '')};
+  text-decoration: ${props => (props.disabled ? 'none': '')};
+  color: ${props => (props.disabled ? 'grey !important': '')};
+  font-weight: ${props => (props.active ? 'bold': '')};
+  display: inline-block;
+  list-style-type: none;
+  padding-right: 20px !important;
+`;
+
 
 class Pagination extends React.Component {
 
@@ -70,25 +94,25 @@ class Pagination extends React.Component {
     }
 
     return (
-        <ul className='pageList'>
-            <li className={pager.currentPage === 1 ? 'disabled page' : 'page'}>
-                <a onClick={() => this.setPage(1)} >First</a>
-            </li>
-            <li className={pager.currentPage === 1 ? 'disabled page' : 'page'}>
-                <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
-            </li>
+        <PageList>
+            <PageNumber disabled={pager.currentPage === 1}>
+                <PageLink onClick={() => this.setPage(1)} >First</PageLink>
+            </PageNumber>
+            <PageNumber disabled={pager.currentPage === 1}>
+                <PageLink onClick={() => this.setPage(pager.currentPage - 1)}>Previous</PageLink>
+            </PageNumber>
             {pager.pages.map((page, index) =>
-                <li key={index} className={pager.currentPage === page ? 'active page' : 'page'}>
-                    <a onClick={() => this.setPage(page)} href='#reviewtop'>{page}</a>
-                </li>
+                <PageNumber key={index} active={pager.currentPage === page}>
+                    <PageLink onClick={() => this.setPage(page)} href='#reviewtop'>{page}</PageLink>
+                </PageNumber>
             )}
-            <li className={pager.currentPage === pager.totalPages ? 'disabled page' : 'page'}>
-                <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-            </li>
-            <li className={pager.currentPage === pager.totalPages ? 'disabled page' : 'page'}>
-                <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
-            </li>
-        </ul>
+            <PageNumber disabled={pager.currentPage === pager.totalPages}>
+                <PageLink onClick={() => this.setPage(pager.currentPage + 1)}>Next</PageLink>
+            </PageNumber>
+            <PageNumber className={pager.currentPage === pager.totalPages}>
+                <PageLink onClick={() => this.setPage(pager.totalPages)}>Last</PageLink>
+            </PageNumber>
+        </PageList>
     );
   }
 

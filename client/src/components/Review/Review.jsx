@@ -47,6 +47,10 @@ const ReviewListItem = styled.li`
   margin-top: 5px;
 `;
 
+const PagPanel = styled.div`
+  margin-top: 2em;
+`;
+
 
 class Review extends React.Component {
   constructor(props) {
@@ -68,8 +72,9 @@ class Review extends React.Component {
   render() {
     return (
       <ReviewSection >
+         <a name='reviewtop'></a>
         <ReviewPanel>
-          <a name='reviewtop'></a>
+
           <ReviewCount>580 Reviews</ReviewCount>
           <ReviewStar count={5} size={30} value ={5} color2={'#137269'} edit={false}></ReviewStar>
         </ReviewPanel>
@@ -77,26 +82,26 @@ class Review extends React.Component {
         <ReviewList>
           <ReviewListItemHalf>
           {this.state.revewCategories.slice(0, 3).map((item, i) => (
-            <ReviewListItem>
-            <ReviewListItemHalf>
-              {item}
-             </ReviewListItemHalf>
-             <ReviewListItemHalf>
-                <ReviewStar count={5} size={24} value={listingRatings.Accuracy} color2={'#137269'} edit={false}/>
-             </ReviewListItemHalf>
-            </ReviewListItem>
-          ))}
-          </ReviewListItemHalf>
-
-          <ReviewListItemHalf>
-            {this.state.revewCategories.slice(3).map((item,i) => (
-              <ReviewListItem>
+            <ReviewListItem  key={i}>
               <ReviewListItemHalf>
                 {item}
                </ReviewListItemHalf>
                <ReviewListItemHalf>
-                  <ReviewStar count={5} size={24} value={listingRatings.Accuracy} color2={'#137269'} edit={false}/>
+                  <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
                </ReviewListItemHalf>
+            </ReviewListItem>
+          ))}
+          </ReviewListItemHalf>
+
+          <ReviewListItemHalf >
+            {this.state.revewCategories.slice(3).map((item,i) => (
+              <ReviewListItem  key={i}>
+                <ReviewListItemHalf>
+                  {item}
+                 </ReviewListItemHalf>
+                 <ReviewListItemHalf>
+                    <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
+                 </ReviewListItemHalf>
               </ReviewListItem>
             ))}
           </ReviewListItemHalf>
@@ -104,9 +109,9 @@ class Review extends React.Component {
         </ReviewList>
 
         {this.state.reviewList.map(review => <ReviewItem key={review.review_id} user_avatar={review.user_avatar} user_name={review.user_name} review_date={review.review_date} review_content={review.review_content}/>)}
-        <div className='pagination'>
+        <PagPanel>
           <Pagination fullReviewList={this.state.fullReviewList} onChange={this.onChange}/>
-        </div>
+        </PagPanel>
       </ReviewSection>
       )
   }

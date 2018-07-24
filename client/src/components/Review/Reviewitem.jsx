@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import reviewCss from '../../styles/review.css';
 import ReportModal from './Report.jsx';
 
 const ReviewItemDiv = styled.div`

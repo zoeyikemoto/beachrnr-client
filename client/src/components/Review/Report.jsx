@@ -1,5 +1,15 @@
 import React from 'react'
-import { Button, Checkbox, Form, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Header, Icon, Image, Modal } from 'semantic-ui-react';
+import styled from 'styled-components';
+
+const FlagIcon = styled(Icon)`
+  float: right;
+  margin-right: 1em;
+`;
+
+const FormDivider = styled.br`
+  height: 3em;
+`;
 
 class ReportModal extends React.Component {
 
@@ -35,19 +45,19 @@ class ReportModal extends React.Component {
       <div>
         {this.state.mark
           ? <div>
-              <Icon onClick={this.show.bind(this)} className='flagicon' name='flag' color='red'/>
+              <FlagIcon onClick={this.show.bind(this)} name='flag' color='red'/>
               <Modal open={this.state.open}>
                 <Modal.Header>You have reported this review</Modal.Header>
-                  <br className='reportForm'></br>
+                  <FormDivider></FormDivider>
                   <Modal.Content>
-                   <Button className='reportButton' color='grey' onClick={this.close.bind(this)}>
+                   <Button color='grey' onClick={this.close.bind(this)}>
                       Close
                     </Button>
                   </Modal.Content>
               </Modal>
             </div>
           : <div>
-              <Icon onClick={this.show.bind(this)} className='flagicon' name='flag outline' color='red'/>
+              <FlagIcon onClick={this.show.bind(this)} name='flag outline' color='red'/>
               <Modal open={this.state.open}>
                 <Modal.Header>Do you want to anonymously report this review?</Modal.Header>
                 <Modal.Content>
@@ -90,7 +100,7 @@ class ReportModal extends React.Component {
                           <p>This review contains false information or may be fake.</p>
                         </Form.Field>
                       </Form>
-                      <br className='reportForm'></br>
+                      <FormDivider></FormDivider>
                       <Button color='black' onClick={this.close.bind(this)}>
                         Cancel
                       </Button>
