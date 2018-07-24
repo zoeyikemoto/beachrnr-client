@@ -1,27 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Review from './components/Review/Review.jsx';
-import Search from './components/Search/Search.jsx';
-import ListingPage from './components/Details/ListingPage.jsx';
-import Booking from './components/Booking/Booking.jsx';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import LandingPage from './components/LandingPage.jsx';
+import MainLayout from './components/MainLayout.jsx';
+
+const Router = BrowserRouter;
 
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div>
-        <Search />
-        <ListingPage />
-        <Booking />
-        <Review />
-      </div>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path='/' component={LandingPage}/>
+            <Route path='/rooms' component={MainLayout} />
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
-
 
 ReactDOM.render(<App />, document.getElementById('app'));

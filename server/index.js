@@ -1,10 +1,19 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const path = require('path');
 
+const port = process.env.PORT || 3000;
+const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
-app.use(express.static(__dirname + '/../client/src/data/assets'));
 app.use(express.static(__dirname + '/../client/theming/images'));
+app.use(express.static(__dirname + '/../client/src/data/assets'));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(port, () => console.log(`app listening on port ${port}!`));
