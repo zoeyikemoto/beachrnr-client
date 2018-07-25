@@ -8,13 +8,8 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.static(__dirname + '/../client/theming/images'));
 app.use(express.static(__dirname + '/../client/src/data/assets'));
 
-app.get('/rooms/:roomId', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../client/dist/'));
-});
-
-
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../client/dist/'), (err) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     }
