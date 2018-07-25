@@ -40,7 +40,7 @@ class Pagination extends React.Component {
   }
 
   setPage(page) {
-    var pager = this.getPager(this.props.fullReviewList, page, 5);
+    var pager = this.getPager(this.props.fullReviewList, page, 5, 7);
     this.setState({
       pager: pager
     })
@@ -48,26 +48,27 @@ class Pagination extends React.Component {
     this.props.onChange(itemList);
   }
 
-  getPager(totalItems, currentPage, pageSize) {
+  getPager(totalItems, currentPage, pageSize, noOfPages) {
     currentPage = currentPage || 1;
     pageSize = pageSize || 10;
+    noOfPages = noOfPages || 10;
     var totalPages =  Math.ceil(totalItems.length / pageSize);
     var startPage, endPage;
     var pages = [];
 
-    if(totalPages<=10) {
+    if(totalPages <= noOfPages) {
       startPage = 1;
       endPage = totalPages;
     } else {
-      if(currentPage<=6) {
+      if(currentPage < (noOfPages/2 + 1)) {
         startPage = 1;
-        endPage = 10;
-      } else if(currentPage >= totalPages - 4) {
-        startPage = totalPages - 9;
+        endPage = noOfPages;
+      } else if(currentPage >= totalPages - Math.ceil(noOfPages/2 - 1)) {
+        startPage = totalPages - noOfPages + 1;
         endPage = totalPages;
       } else {
-        startPage = currentPage - 4;
-        endPage = currentPage + 5;
+        startPage = currentPage - Math.ceil(noOfPages/2 - 1);
+        endPage = currentPage + Math.ceil(noOfPages/2) - 1;
       };
     };
 
@@ -83,6 +84,7 @@ class Pagination extends React.Component {
        endIndex: endIndex,
        startPage: startPage,
        endPage: endPage,
+       noOfPages: noOfPages
     }
   }
 
@@ -101,10 +103,27 @@ class Pagination extends React.Component {
             <PageNumber disabled={pager.currentPage === 1}>
                 <PageLink onClick={() => this.setPage(pager.currentPage - 1)}>Previous</PageLink>
             </PageNumber>
-            {pager.pages.map((page, index) =>
-                <PageNumber key={index} active={pager.currentPage === page}>
+            {pager.pages.map((page, index) => (
+                index === 0
+              ? <PageNumber key={index} active={pager.currentPage === page}>
+                    <PageLink onClick={() => this.setPage(1)} href='#reviewtop'>1</PageLink>
+                </PageNumber>
+              : index === 1 && page !== 2
+              ?  <PageNumber key={index} active={pager.currentPage === page}>
+                    <PageLink href='#reviewtop'>...</PageLink>
+                </PageNumber>
+              : index === pager.noOfPages - 1
+              ?  <PageNumber key={index} active={pager.currentPage === page}>
+                    <PageLink onClick={() => this.setPage(pager.totalPages)} href='#reviewtop'>{pager.totalPages}</PageLink>
+                </PageNumber>
+              : index === pager.noOfPages - 2 && page !== pager.totalPages - 1
+              ?  <PageNumber key={index} active={pager.currentPage === page}>
+                    <PageLink href='#reviewtop'>...</PageLink>
+                </PageNumber>
+              : <PageNumber key={index} active={pager.currentPage === page}>
                     <PageLink onClick={() => this.setPage(page)} href='#reviewtop'>{page}</PageLink>
                 </PageNumber>
+              )
             )}
             <PageNumber disabled={pager.currentPage === pager.totalPages}>
                 <PageLink onClick={() => this.setPage(pager.currentPage + 1)}>Next</PageLink>
