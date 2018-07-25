@@ -12,7 +12,7 @@ for(var i = 0; i <=580; i++) {
     'review_id': faker.random.number(),
     'user_avatar': faker.image.avatar(),
     'review_date': faker.date.past().toString().split(' ').slice(0,4).join(' '),
-    'review_content': faker.lorem.paragraph(),
+    'review_content': faker.lorem.paragraph() + faker.lorem.paragraph(),
   };
   fullReviewList.push(review);
 

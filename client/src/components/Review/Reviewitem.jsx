@@ -20,9 +20,8 @@ const ReviewItemAvatar = styled.img`
 
 const ReviewContent = styled.div`
   clear: both;
-  height: 4.8em;
-  line-height: 1.2em;
-  margin-top: 1em;
+  line-height: 1.5em;
+  margin: 1em 0 1.5em;
 `;
 
 const ReviewPerson = styled.span`
@@ -30,22 +29,44 @@ const ReviewPerson = styled.span`
   line-height: 1.3em;
 `;
 
+const ReadMoreButton = styled.span`
+  color: #008080;
+  &:hover {text-decoration: underline;
+           cursor: pointer;};
+`;
 
-const ReviewItem = (props) => (
-  <ReviewItemDiv>
-    <ReviewItemAvatar src={props.user_avatar} />
-    <ReviewPerson>{props.user_name}</ReviewPerson>
-    <ReportModal/>
-    <br></br>
-    <ReviewPerson>{props.review_date}</ReviewPerson>
-    <ReviewContent>
-      <p>
-      {props.review_content}
-      </p>
-    </ReviewContent>
 
-  </ReviewItemDiv>
-);
+class ReviewItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.readMore = this.readMore.bind(this);
+  }
+
+  readMore(e, replacedText) {
+    e.target.textContent = replacedText;
+    e.target.setAttribute('style', 'color: black; text-decoration: none; cursor: auto');
+  }
+
+  render() {
+    return (
+      <ReviewItemDiv>
+        <ReviewItemAvatar src={this.props.user_avatar} />
+        <ReviewPerson>{this.props.user_name}</ReviewPerson>
+        <ReportModal/>
+        <br></br>
+        <ReviewPerson>{this.props.review_date}</ReviewPerson>
+        <ReviewContent>
+          <span>{this.props.review_content.slice(0, 253)}</span>
+          {this.props.review_content.length > 253
+           ? <ReadMoreButton onClick={(e) => {this.readMore(e, this.props.review_content.slice(253))}}>...Read more</ReadMoreButton>
+           : <span></span>
+          }
+        </ReviewContent>
+      </ReviewItemDiv>
+    )
+  }
+};
 
 
 export default ReviewItem;
