@@ -11,7 +11,8 @@ const IconImage = styled(Image)`
 const StyledMenu = styled(Menu)`
   height: 90px;
   box-shadow: none !important;
-  border: none !important;
+  border-bottom: solid #484848 2px;
+  margin-bottom: 10px;
   position: fixed;
 `;
 

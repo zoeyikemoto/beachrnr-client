@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Div = styled.div`
   width: 50%;
   margin: 3% auto;
+  padding-top: 25px;
 `;
 
 const HeaderDiv = Div.extend`
@@ -66,8 +67,8 @@ class Search extends React.Component {
       <Form>
         <Div>
           <Form.Field>
-            <input style={ {backgroundImage: 'url(searchIcon.png)', backgroundRepeat: 'no-repeat', paddingLeft: '40px'} }
-              placeholder="Destination..."
+            <input style={ {backgroundImage: 'url(searchIcon.png)', backgroundPosition: 'left center', backgroundRepeat: 'no-repeat', paddingLeft: '40px', height: '48px'} }
+              placeholder='Destination...'
               ref={input => this.search = input}
               onChange={this.handleInputChange}
               onKeyPress={(e)=>{this.handleKeyPress(e, this.handleInputChange)}}

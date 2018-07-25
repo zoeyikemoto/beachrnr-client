@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Card, Image } from 'semantic-ui-react';
 import ReactStars from 'react-stars';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const SuggestedList = styled.li`
   list-style-type: none;
@@ -19,6 +19,7 @@ const SuggestedItem = styled.div`
 
 const SuggestionCard = styled(Card)`
   box-shadow: none !important;  
+  padding-top: 20px !important;
 `;
 
 const ThumbnailImage = styled(Image)`
