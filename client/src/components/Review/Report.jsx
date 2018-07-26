@@ -2,11 +2,6 @@ import React from 'react'
 import { Button, Checkbox, Form, Header, Icon, Image, Modal } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-const FlagIcon = styled(Icon)`
-  float: right;
-  margin-right: 1em;
-`;
-
 const FormDivider = styled.br`
   height: 3em;
 `;
@@ -45,7 +40,7 @@ class ReportModal extends React.Component {
       <div>
         {this.state.mark
           ? <div>
-              <FlagIcon onClick={this.show.bind(this)} name='flag' color='red'/>
+              <Icon onClick={this.show.bind(this)} name='flag' color='red'/>
               <Modal open={this.state.open}>
                 <Modal.Header>You have reported this review</Modal.Header>
                   <FormDivider></FormDivider>
@@ -57,7 +52,7 @@ class ReportModal extends React.Component {
               </Modal>
             </div>
           : <div>
-              <FlagIcon onClick={this.show.bind(this)} name='flag outline' color='red'/>
+              <Icon onClick={this.show.bind(this)} name='flag outline' color='red'/>
               <Modal open={this.state.open}>
                 <Modal.Header>Do you want to anonymously report this review?</Modal.Header>
                 <Modal.Content>

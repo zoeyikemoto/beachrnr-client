@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import ReportModal from './Report.jsx';
+import {Grid} from 'semantic-ui-react';
 
 const ReviewItemDiv = styled.div`
   margin-top: 1em;
@@ -11,11 +12,16 @@ const ReviewItemDiv = styled.div`
   border-width: 1px;
 `;
 
+
 const ReviewItemAvatar = styled.img`
   width: 40px;
   height: 40px;
   float: left;
   border-radius: 50%;
+`;
+
+const ReviewPerson = styled.span`
+  line-height: 1.5em;
 `;
 
 const ReviewContent = styled.div`
@@ -24,10 +30,6 @@ const ReviewContent = styled.div`
   margin: 1em 0 1.5em;
 `;
 
-const ReviewPerson = styled.span`
-  margin: 0.8em;
-  line-height: 1.3em;
-`;
 
 const ReadMoreButton = styled.span`
   color: #008080;
@@ -51,11 +53,19 @@ class ReviewItem extends React.Component {
   render() {
     return (
       <ReviewItemDiv>
-        <ReviewItemAvatar src={this.props.user_avatar} />
-        <ReviewPerson>{this.props.user_name}</ReviewPerson>
-        <ReportModal/>
-        <br></br>
-        <ReviewPerson>{this.props.review_date}</ReviewPerson>
+        <Grid>
+          <Grid.Column mobile={3} tablet={2} computer={2} largeScreen={1} widescreen={1} style={{width:'10%','display':'inline-block', 'verticalAlign': 'middle'}}>
+            <ReviewItemAvatar src={this.props.user_avatar} />
+          </Grid.Column>
+          <Grid.Column mobile={11} tablet={12} computer={12} largeScreen={13} widescreen={13} style={{'display':'inline-block', 'verticalAlign': 'middle'}}>
+            <ReviewPerson>{this.props.user_name}</ReviewPerson>
+            <br></br>
+            <ReviewPerson>{this.props.review_date}</ReviewPerson>
+          </Grid.Column>
+          <Grid.Column mobile={2} tablet={2} computer={2} largeScreen={2} widescreen={2} style={{'display':'inline-block', 'textAlign':'right'}}>
+            <ReportModal/>
+          </Grid.Column>
+        </Grid>
         <ReviewContent>
           <span>{this.props.review_content.slice(0, 253)}</span>
           {this.props.review_content.length > 253

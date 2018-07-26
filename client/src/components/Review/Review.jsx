@@ -27,11 +27,26 @@ const ReviewPanel = styled.div`
   border-width: 1px;
 `;
 
-const ReviewListItemHalf = styled.div`
+const ReviewListItemLeftHalf = styled.div`
   display: inline-block;
   width: 50%;
 `;
 
+const ReviewListItemRightHalf = styled.div`
+  display: inline-block;
+  text-align: right;
+  width: 50%;
+`;
+
+const ReviewListItem45 = styled.div`
+  display: inline-block;
+  width: 45%;
+`;
+
+const ReviewListItem10 = styled.div`
+  display: inline-block;
+  width: 10%;
+`;
 
 const ReviewList = styled.ul`
   list-style-type: none;
@@ -80,31 +95,32 @@ class Review extends React.Component {
         </ReviewPanel>
 
         <ReviewList>
-          <ReviewListItemHalf>
+          <ReviewListItem45>
           {this.state.revewCategories.slice(0, 3).map((item, i) => (
             <ReviewListItem  key={i}>
-              <ReviewListItemHalf>
+              <ReviewListItemLeftHalf>
                 {item}
-               </ReviewListItemHalf>
-               <ReviewListItemHalf>
+               </ReviewListItemLeftHalf>
+               <ReviewListItemRightHalf>
                   <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
-               </ReviewListItemHalf>
+               </ReviewListItemRightHalf>
             </ReviewListItem>
           ))}
-          </ReviewListItemHalf>
-
-          <ReviewListItemHalf >
+          </ReviewListItem45>
+          <ReviewListItem10>
+          </ReviewListItem10>
+          <ReviewListItem45 >
             {this.state.revewCategories.slice(3).map((item,i) => (
               <ReviewListItem  key={i}>
-                <ReviewListItemHalf>
+                <ReviewListItemLeftHalf>
                   {item}
-                 </ReviewListItemHalf>
-                 <ReviewListItemHalf>
+                 </ReviewListItemLeftHalf>
+                 <ReviewListItemRightHalf>
                     <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
-                 </ReviewListItemHalf>
+                 </ReviewListItemRightHalf>
               </ReviewListItem>
             ))}
-          </ReviewListItemHalf>
+          </ReviewListItem45>
 
         </ReviewList>
 
