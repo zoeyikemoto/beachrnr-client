@@ -1,7 +1,7 @@
 import React from 'react';
 import { listings } from '../../data/mockedDataSearch';
 import Suggestions from './Suggestions.jsx'
-import { Form } from 'semantic-ui-react'
+import { Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -10,10 +10,10 @@ const Div = styled.div`
   padding-top: 25px;
 `;
 
-const HeaderDiv = Div.extend`
-  font-size: 25px;
+const HeaderDiv = styled(Header)`
+  font-size: 25px !important;
   margin-left: 20px !important;
-  color: #696969;
+  color: #696969 !important;
   font-weight: bold;
 `;
 
