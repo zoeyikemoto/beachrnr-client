@@ -5,6 +5,7 @@ import {fullReviewList, listingRatings} from '../../data/mock-data-review.js';
 import ReviewItem from './Reviewitem.jsx';
 import styled from 'styled-components';
 import Pagination from './Pagination.jsx';
+import {Grid} from 'semantic-ui-react';
 
 const ReviewSection = styled.div`
   margin: 20px auto;
@@ -27,37 +28,6 @@ const ReviewPanel = styled.div`
   border-width: 1px;
 `;
 
-const ReviewListItemLeftHalf = styled.div`
-  display: inline-block;
-  width: 50%;
-`;
-
-const ReviewListItemRightHalf = styled.div`
-  display: inline-block;
-  text-align: right;
-  width: 50%;
-`;
-
-const ReviewListItem45 = styled.div`
-  display: inline-block;
-  width: 45%;
-`;
-
-const ReviewListItem10 = styled.div`
-  display: inline-block;
-  width: 10%;
-`;
-
-const ReviewList = styled.ul`
-  list-style-type: none;
-  margin-left: 0;
-  padding-left: 0;
-  padding-bottom: 30px;
-  border-bottom-style: solid;
-  border-bottom-color: grey;
-  border-width: 1px;
-`;
-
 const ReviewListItem = styled.li`
   margin-top: 5px;
 `;
@@ -73,9 +43,27 @@ class Review extends React.Component {
     this.state = {
       'reviewList': fullReviewList.slice(0, 10),
       'fullReviewList': fullReviewList,
-      'revewCategories': ['Accuracy', 'Location', 'Communication', 'Checkin', 'Cleanliness', 'Value']
+      'revewCategories': ['Accuracy', 'Location', 'Communication', 'Checkin', 'Cleanliness', 'Value'],
+      'isMobile': false,
+      'isTablet': false,
     };
     this.onChange = this.onChange.bind(this);
+    this.onWindowResize = this.onWindowResize.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.onWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize);
+  }
+
+  onWindowResize() {
+    this.setState({
+      'isMobile': window.innerWidth < 500,
+      'isTablet': window.innerWidth>=500 && window.innerWidth <=989
+    })
   }
 
   onChange(currentPageItems) {
@@ -89,41 +77,43 @@ class Review extends React.Component {
       <ReviewSection >
          <a name='reviewtop'></a>
         <ReviewPanel>
-
           <ReviewCount>580 Reviews</ReviewCount>
           <ReviewStar count={5} size={30} value ={5} color2={'#137269'} edit={false}></ReviewStar>
         </ReviewPanel>
-
-        <ReviewList>
-          <ReviewListItem45>
-          {this.state.revewCategories.slice(0, 3).map((item, i) => (
-            <ReviewListItem  key={i}>
-              <ReviewListItemLeftHalf>
-                {item}
-               </ReviewListItemLeftHalf>
-               <ReviewListItemRightHalf>
-                  <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
-               </ReviewListItemRightHalf>
-            </ReviewListItem>
-          ))}
-          </ReviewListItem45>
-          <ReviewListItem10>
-          </ReviewListItem10>
-          <ReviewListItem45 >
-            {this.state.revewCategories.slice(3).map((item,i) => (
-              <ReviewListItem  key={i}>
-                <ReviewListItemLeftHalf>
+        <Grid style={{'height':'1em'}}><Grid.Column></Grid.Column></Grid>
+        <Grid style={{'marginBottom': '20px', 'paddingBottom':'10px', 'borderBottomStyle': 'solid', 'borderBottomColor': 'grey', 'borderWidth': '1px'}}>
+          <Grid.Column mobile={16} tablet={16} computer={7} largeScreen={7} widescreen={7}>
+            {this.state.revewCategories.slice(0, 3).map((item, i) => (
+              <Grid key={i} style={{'lineHeight' : '1.2em', 'height':'3em'}}>
+                <Grid.Column mobile={8} tablet={8} computer={8} largeScreen={8} widescreen={8}>
                   {item}
-                 </ReviewListItemLeftHalf>
-                 <ReviewListItemRightHalf>
+                 </Grid.Column>
+                 <Grid.Column mobile={8} tablet={8} computer={8} largeScreen={8} widescreen={8} style={{textAlign:'right'}}>
                     <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
-                 </ReviewListItemRightHalf>
-              </ReviewListItem>
+                 </Grid.Column>
+               </Grid>
             ))}
-          </ReviewListItem45>
 
-        </ReviewList>
+          </Grid.Column>
+          { this.state.isMobile || this.state.isTablet
+            ? ''
+            : <Grid.Column computer={2} largeScreen={2} widescreen={2}>
+              </Grid.Column>
+          }
 
+          <Grid.Column mobile={16} tablet={16} computer={7} largeScreen={7} widescreen={7}>
+            {this.state.revewCategories.slice(3).map((item, i) => (
+              <Grid key={i} style={{'lineHeight' : '1.2em', 'height':'3em'}}>
+                <Grid.Column mobile={8} tablet={8} computer={8} largeScreen={8} widescreen={8}>
+                  {item}
+                 </Grid.Column>
+                 <Grid.Column mobile={8} tablet={8} computer={8} largeScreen={8} widescreen={8} style={{'textAlign': 'right'}}>
+                    <ReviewStar count={5} size={24} value={listingRatings[item]} color2={'#137269'} edit={false}/>
+                 </Grid.Column>
+              </Grid>
+            ))}
+          </Grid.Column>
+        </Grid>
         {this.state.reviewList.map(review => <ReviewItem key={review.review_id} user_avatar={review.user_avatar} user_name={review.user_name} review_date={review.review_date} review_content={review.review_content}/>)}
         <PagPanel>
           <Pagination fullReviewList={this.state.fullReviewList} onChange={this.onChange}/>
@@ -135,6 +125,4 @@ class Review extends React.Component {
 
 
 export default Review;
-
-
 
