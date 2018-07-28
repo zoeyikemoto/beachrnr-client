@@ -44,6 +44,64 @@ const Carat = styled.svg`
   fill: currentcolor;
 `;
 
+const GuestTypeWrapper = styled.div`
+  margin-bottom: 1rem;
+  user-select: none;
+`;
+
+const InlineBlock = styled.div`
+  display: inline-block
+`;
+
+const GuestTypeSection = InlineBlock.extend`
+  width: 50%;
+  vertical-align: middle;
+`;
+
+const GuestTypeName = GuestTypeSection.extend`
+  text-align: left;
+`;
+
+const GuestTypeCounter = GuestTypeSection.extend`
+  text-align: center;
+`;
+
+const GuestTypeCounterButton = InlineBlock.extend`
+  width: 40%;
+  height: 100%;
+  cursor: pointer;
+`;
+
+const AdultCounterDecrement = GuestTypeCounterButton.extend`
+  opacity: ${props => props.guestCount < 2 ? '0.5' : '1'};
+`;
+
+const AdultCounterIncrement = GuestTypeCounterButton.extend``;
+
+const ButtonCircle = InlineBlock.extend`
+  border: 1px solid green;
+  border-radius: 100%;
+  color: green;
+  width: 2rem;
+  height: 2rem;
+`;
+
+const VertAlignedSpan = styled.span`
+  vertical-align: middle;
+`;
+
+const GuestCount = InlineBlock.extend`
+  width: 20%
+`;
+
+const GuestSelect = styled(Card)`
+  position: absolute !important;
+  width: 100% !important;
+  left: 0;
+  border-top: 2px solid green !important;
+  border-radius: 0 !important;
+`;
+
 class Booking extends React.Component {
   constructor(props) {
     super(props);
@@ -137,26 +195,28 @@ class Booking extends React.Component {
                 </div>
                 {this.state.guestMenuOpen
                   ?
-                    <Card style={{position: 'absolute', width: '100%', left: 0, borderRadius: 0, borderTop: '2px solid green'}}>
+                    <GuestSelect>
                       <Card.Content>
-                        <div style={{display: 'inline-block', width: '50%', textAlign: 'left'}}>Adults</div>
-                        <div style={{display: 'inline-block', width: '50%', textAlign: 'center'}}>
-                          <div onClick={this.decrementGuests} style={{display: 'inline-block', width: '40%', height: '100%', cursor: 'pointer', opacity: this.state.standardGuests < 2 ? '0.5' : '1'}}>
-                            <div style={{display: 'inline-block', border: '1px solid green', borderRadius: '100%', color: 'green', width: '2rem', height: '2rem'}}>
-                              <span style={{verticalAlign: 'middle'}}>-</span>
-                            </div>
-                          </div>
-                          <div style={{display: 'inline-block', width: '20%'}}>
-                            <span style={{verticalAlign: 'middle'}}>{this.state.standardGuests}</span>
-                          </div>
-                          <div onClick={this.incrementGuests} style={{display: 'inline-block', width: '40%', height: '100%', cursor: 'pointer'}}>
-                            <div style={{display: 'inline-block', border: '1px solid green', borderRadius: '100%', color: 'green', width: '2rem', height: '2rem'}}>
-                              <span style={{verticalAlign: 'middle'}}>+</span>
-                            </div>
-                          </div>
-                        </div>
+                        <GuestTypeWrapper>
+                          <GuestTypeName>Adults</GuestTypeName>
+                          <GuestTypeCounter>
+                            <AdultCounterDecrement onClick={this.decrementGuests} guestCount={this.state.standardGuests} >
+                              <ButtonCircle>
+                                <VertAlignedSpan>-</VertAlignedSpan>
+                              </ButtonCircle>
+                            </AdultCounterDecrement>
+                            <GuestCount>
+                              <VertAlignedSpan>{this.state.standardGuests}</VertAlignedSpan>
+                            </GuestCount>
+                            <AdultCounterIncrement onClick={this.incrementGuests} >
+                              <ButtonCircle>
+                                <VertAlignedSpan>+</VertAlignedSpan>
+                              </ButtonCircle>
+                            </AdultCounterIncrement>
+                          </GuestTypeCounter>
+                        </GuestTypeWrapper>
                       </Card.Content>
-                    </Card>
+                    </GuestSelect>
                   : null
                 }
               </DropDown>
