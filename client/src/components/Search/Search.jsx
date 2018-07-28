@@ -66,7 +66,7 @@ class Search extends React.Component {
       })
     })
   }
- 
+
   render() {
     return (
       <Form>
@@ -95,5 +95,5 @@ class Search extends React.Component {
     )
   }
 }
- 
+
 export default Search;
