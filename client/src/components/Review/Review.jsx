@@ -74,7 +74,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div>
          <a name='reviewtop'></a>
         <ReviewPanel>
           <ReviewCount>580 Reviews</ReviewCount>
@@ -115,7 +115,7 @@ class Review extends React.Component {
         <PagPanel>
           <Pagination fullReviewList={this.state.fullReviewList} onChange={this.onChange}/>
         </PagPanel>
-      </React.Fragment>
+      </div>
       )
   }
 };
