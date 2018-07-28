@@ -12,6 +12,11 @@ const ReviewItemDiv = styled.div`
   border-width: 1px;
 `;
 
+const AvatarGrid = styled(Grid.Column)`
+  width: 10% !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+`;
 
 const ReviewItemAvatar = styled.img`
   width: 40px;
@@ -20,8 +25,18 @@ const ReviewItemAvatar = styled.img`
   border-radius: 50%;
 `;
 
+const ReviewPersonGrid = styled(Grid.Column)`
+  display: inline-block !important;
+  vertical-align: middle !important;
+`;
+
 const ReviewPerson = styled.span`
   line-height: 1.5em;
+`;
+
+const ReportGrid = styled(Grid.Column)`
+  display: inline-block !important;
+  text-align: right !important;
 `;
 
 const ReviewContent = styled.div`
@@ -54,17 +69,17 @@ class ReviewItem extends React.Component {
     return (
       <ReviewItemDiv>
         <Grid>
-          <Grid.Column mobile={3} tablet={2} computer={2} largeScreen={1} widescreen={1} style={{width:'10%','display':'inline-block', 'verticalAlign': 'middle'}}>
+          <AvatarGrid mobile={3} tablet={2} computer={2} largeScreen={1} widescreen={1}>
             <ReviewItemAvatar src={this.props.user_avatar} />
-          </Grid.Column>
-          <Grid.Column mobile={11} tablet={12} computer={12} largeScreen={13} widescreen={13} style={{'display':'inline-block', 'verticalAlign': 'middle'}}>
+          </AvatarGrid>
+          <ReviewPersonGrid mobile={11} tablet={12} computer={12} largeScreen={13} widescreen={13}>
             <ReviewPerson>{this.props.user_name}</ReviewPerson>
             <br></br>
             <ReviewPerson>{this.props.review_date}</ReviewPerson>
-          </Grid.Column>
-          <Grid.Column mobile={2} tablet={2} computer={2} largeScreen={2} widescreen={2} style={{'display':'inline-block', 'textAlign':'right'}}>
+          </ReviewPersonGrid>
+          <ReportGrid mobile={2} tablet={2} computer={2} largeScreen={2} widescreen={2}>
             <ReportModal/>
-          </Grid.Column>
+          </ReportGrid>
         </Grid>
         <ReviewContent>
           <span>{this.props.review_content.slice(0, 253)}</span>
