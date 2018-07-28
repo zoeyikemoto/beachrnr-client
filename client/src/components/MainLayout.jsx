@@ -17,9 +17,9 @@ const MainLayout = (props) => {
         <Navbar />
       </div>
       <Div>
-        <ListingPage {...props}/>
-        <Booking />
-        <Review />
+        <ListingPage {...props} listingId = {props.match.params.id}/>
+        <Booking {...props} listingId = {props.match.params.id}/>
+        <Review {...props} listingId = {props.match.params.id}/>
       </Div>
     </div>
   )
