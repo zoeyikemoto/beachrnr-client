@@ -51,15 +51,8 @@ const pluralize = function(num, word){
   }
 };
 
-class ListingDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
-
-  render(props) {
-    const data = this.props.data;
+const ListingDetails = (props) => {
+    const data = props.data;
     return (
       <div>
         <MainImage style={ {
@@ -121,7 +114,6 @@ class ListingDetails extends React.Component {
         </MainContainer>
       </div>
       )
-  }
 };
 
 export default ListingDetails;

@@ -11,14 +11,13 @@ const Div = styled.div`
 `;
 
 const MainLayout = (props) => {
-  console.log("Listing ID in mainlayout: " + props.match.params.id);
   return (
     <div>
       <div>
         <Navbar />
       </div>
       <Div>
-        <ListingPage listingId={props.match.params.id}/>
+        <ListingPage {...props}/>
         <Booking />
         <Review />
       </Div>

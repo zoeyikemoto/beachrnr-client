@@ -6,21 +6,20 @@ import ListingDetails from './ListingDetails.jsx';
 import styled from 'styled-components';
 
 
-class ListingPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: details
-    }
-  }
+// class ListingPage extends React.Component {
 
-  render(props) {
-//  console.log("Listing ID in listingpage: " + props.match.params.id);
+//     this.state = {
+//       data: details
+//     }
+//   }
+
+//   render(props) {
+const ListingPage = (props) => {
+console.log("Listing ID in listingpage: " + props.match.params.id);
     return (
       <ListingDetails data={details[0]} />
       )
-  }
-};
+}
 
 
 export default ListingPage;
