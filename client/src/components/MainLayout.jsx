@@ -10,15 +10,16 @@ const Div = styled.div`
   margin-top: 90px;
 `;
 
-const MainLayout = () => {
+const MainLayout = (props) => {
+  console.log("Listing ID in mainlayout: " + props.match.params.id);
   return (
-    <div> 
+    <div>
       <div>
         <Navbar />
       </div>
       <Div>
-        <ListingPage />
-        <Booking /> 
+        <ListingPage listingId={props.match.params.id}/>
+        <Booking />
         <Review />
       </Div>
     </div>

@@ -15,6 +15,7 @@ class ListingPage extends React.Component {
   }
 
   render(props) {
+//  console.log("Listing ID in listingpage: " + props.match.params.id);
     return (
       <ListingDetails data={details[0]} />
       )
