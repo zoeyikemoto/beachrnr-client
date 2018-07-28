@@ -24,6 +24,33 @@ const Description = styled.div`
   padding-bottom: 50px;
 `;
 
+const ReadMore = styled.div`
+`;
+
+const ReadMoreButton = styled.button`
+`;
+
+const ListBlock = styled.ul`
+`;
+
+const ListItem = styled.li`
+`;
+
+const Rooms = styled.h4`
+`;
+
+const RoomItem = styled.span`
+  margin-left: 10px;
+`;
+
+const pluralize = function(num, word){
+  if(num > 0 && num <= 1) {
+    return num + " " + word;
+  } else {
+    return num + " " + word + "s";
+  }
+};
+
 class ListingDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -43,61 +70,53 @@ class ListingDetails extends React.Component {
           backgroundSize: 'cover',
           backgroundPosition: '50% 50%'
         } }>
-
         </MainImage>
         <MainContainer>
+          <p>{data.room_type}</p>
           <Title>{data.unitName}</Title>
           <h3>{data.city}, {data.state}</h3>
-          <h4>{data.beds} Bedroom  {data.property_type}</h4>
+          <Rooms>
+            <RoomItem style={ {
+              marginLeft: '0px'
+            } }>
+              {pluralize(data.guests, 'guest')}
+            </RoomItem>
+            <RoomItem>
+              {pluralize(data.bedrooms, 'bedroom')}
+            </RoomItem>
+            <RoomItem>
+              {pluralize(data.beds, 'bed')}
+            </RoomItem>
+            <RoomItem>
+              {pluralize(data.baths, 'bath')}
+            </RoomItem>
+          </Rooms>
           <h4>{data.unitPrice} {data.priceModifier}</h4>
           <Description>
             <p>{data.description_short}</p>
+            <ReadMore>
+              <p>
+                {data.description_long}
+              </p>
+            </ReadMore>
           </Description>
           <Description>
             <h3>Amenities</h3>
-            <ul>
-              <li>
-                Wifi
-              </li>
-              <li>
-                Cable TV
-              </li>
-              <li>
-                Air conditioning
-              </li>
-              <li>
-                Laptop friendly workspace
-              </li>
-              <li>
-                TV
-              </li>
-              <li>
-                Iron
-              </li>
-            </ul>
+            <ListBlock>
+              {data.amenities.map(function(amenity){
+                return (<ListItem>{amenity}</ListItem>);
+              })}
+            </ListBlock>
           </Description>
           <Description>
-            <h3>House Rules</h3>
-            <ul>
-              <li>
-                Not safe or suitable for children (0-12 years)
-              </li>
-              <li>
-                No smoking
-              </li>
-              <li>
-                Not suitable for pets
-              </li>
-              <li>
-                No parties or events
-              </li>
-              <li>
-                Check-in is anytime after 4PM
-              </li>
-              <li>
-                Check out by 11AM
-              </li>
-            </ul>
+            <ListBlock>
+              {data.house_rules.map(function(rule){
+                return (<ListItem>{rule}</ListItem>);
+              })}
+            </ListBlock>
+          </Description>
+          <Description>
+            <p>{data.cancellation_policy}</p>
           </Description>
         </MainContainer>
       </div>

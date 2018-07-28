@@ -14,17 +14,9 @@ class ListingPage extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.reportHandler = this.reportHandler.bind(this);
-  // }
-
-  // reportHandler(e) {
-  //   console.log('flag has been clicked');
-  // }
-
   render(props) {
     return (
-      <ListingDetails data={details} />
+      <ListingDetails data={details[0]} />
       )
   }
 };
