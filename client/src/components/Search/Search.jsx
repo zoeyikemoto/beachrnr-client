@@ -1,6 +1,7 @@
 import React from 'react';
-import { listings } from '../../data/mockedDataSearch';
+// import { listings } from '../../data/mockedDataSearch';
 import Suggestions from './Suggestions.jsx'
+import api from '../../../utils/api';
 import { Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
 
@@ -29,13 +30,17 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    let results = listings.filter(listing => 
-      listing.city === 'San Francisco'
-    );
-    this.setState({
-      results: results,
-      query: 'San Francisco'
-    })
+    let currentLocation = 'San Francisco';
+    api.fetchListings(currentLocation)
+    .then(results => {
+      let filteredResult = results.filter(listing => 
+        listing.city === currentLocation
+      );
+      this.setState({
+        results: filteredResult,
+        query: currentLocation
+      })
+    }, err => console.log(err));
   }
  
   handleInputChange() {
@@ -54,11 +59,11 @@ class Search extends React.Component {
   }
 
   getInfo(location) {
-    let results = listings.filter(listing => 
-      listing.unitAddress.toLowerCase().includes(location.toLowerCase())
-    );
-    this.setState({
-      results: results
+    api.fetchListings(location)
+    .then(results => {
+      this.setState({
+        results: results
+      })
     })
   }
  
