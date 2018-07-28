@@ -9,8 +9,8 @@ const MainImage = styled.div`
 `;
 
 const MainContainer = styled.div`
-    width: 60%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 `;
 
 const Title = styled.h1`
