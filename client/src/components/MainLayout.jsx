@@ -7,12 +7,12 @@ import Booking from './Booking/Booking.jsx';
 import Review from './Review/Review.jsx';
 
 const Div = styled.div`
-  margin-top: 90px;
+  margin: 90px 1rem 0 1rem;
 `;
 
 const MainLayout = () => {
   return (
-    <div> 
+    <React.Fragment> 
       <div>
         <Navbar />
       </div>
@@ -21,8 +21,8 @@ const MainLayout = () => {
         <Booking /> 
         <Review />
       </Div>
-    </div>
+    </React.Fragment>
   )
-}
+};
 
 export default MainLayout;
