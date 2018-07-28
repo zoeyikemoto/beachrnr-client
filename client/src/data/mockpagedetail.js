@@ -5,6 +5,7 @@ const details = [{
       'unitImage': 'https://a0.muscache.com/im/pictures/50616050/43df6979_original.jpg',
       'hostId': 3062517,
       'hostName': 'Debbie',
+      'hostIcon': 'https://a0.muscache.com/im/users/19928221/profile_pic/1408027917/original.jpg',
       'isSuperhost': false,
       'unitAddress': 'Seattle, United States',
       'neighbourhood_cleansed': 'Seattle',
