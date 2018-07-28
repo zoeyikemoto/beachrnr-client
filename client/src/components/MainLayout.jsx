@@ -7,7 +7,7 @@ import Booking from './Booking/Booking.jsx';
 import Review from './Review/Review.jsx';
 
 const Div = styled.div`
-  margin-top: 90px;
+  margin: 90px 1rem 0 1rem;
 `;
 
 const MainLayout = (props) => {
@@ -15,21 +15,23 @@ const MainLayout = (props) => {
     return listing.id+"" === props.match.params.id;
   });
   if(currentListing) {
-  return (
-    <div>
+    return (
       <div>
-        <Navbar />
+        <div>
+          <Navbar />
+        </div>
+        <Div>
+          <ListingPage {...props} listingId = {props.match.params.id} currentListing = {currentListing}/>
+          <Booking {...props} listingId = {props.match.params.id}/>
+          <Review {...props} listingId = {props.match.params.id}/>
+        </Div>
       </div>
-      <Div>
-        <ListingPage {...props} listingId = {props.match.params.id} currentListing = {currentListing}/>
-        <Booking {...props} listingId = {props.match.params.id}/>
-        <Review {...props} listingId = {props.match.params.id}/>
-      </Div>
-    </div>
-  )
-} else {
-  return (<p>Listing not found.</p>);
+    )
+  } else {
+    return (<p>Listing not found.</p>);
+  }
 }
 }
+
 
 export default MainLayout;
