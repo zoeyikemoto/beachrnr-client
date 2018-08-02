@@ -31,7 +31,6 @@ const MainLayout = (props) => {
     return (<p>Listing not found.</p>);
   }
 }
-}
 
 
 export default MainLayout;
