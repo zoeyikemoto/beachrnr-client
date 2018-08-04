@@ -11,33 +11,37 @@ const SuggestedList = styled.li`
   justify-content: space-around;
   text-align: left;
 `;
-
+  
 const SuggestedItem = styled.div`
   font-size: 12px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
 `;
-
+  
 const SuggestionCard = styled(Card)`
   box-shadow: none !important;  
   padding-top: 20px !important;
 `;
-
+  
 const ThumbnailImage = styled(Image)`
   width: 300px; 
   height: 200px;
   border-radius: 2%;
 `;
-
-const HeaderSpan = styled.span`
-  font-size: 12px; 
+  
+const StyledSpan = styled.span`
+  color: #484848 !important;
 `;
 
-const PolicySpan = styled.span`
+const HeaderSpan = styled(StyledSpan)`
+  font-size: 12px; 
+`;
+  
+const PolicySpan = styled(StyledSpan)`
   font-weight: 100;
   font-size: 14px;   
 `;
 
-const MetaDataSpan = styled.span`
+const MetaDataSpan = styled(StyledSpan)`
   display: inline-block;
   vertical-align: middle;
 `;
@@ -45,8 +49,8 @@ const MetaDataSpan = styled.span`
 const Suggestions = (props) => {
   const options = props.results.map(r => (
     <SuggestedItem key={r.id}>
-      <SuggestionCard>
-        <Link to={`/rooms/${r.id}`} target='_blank'>
+      <Link to={`/rooms/${r.id}`} target='_blank'>
+        <SuggestionCard>
           <ThumbnailImage
               src={r.unitImage}
               alt={`Image for ${r.unitName}`}
@@ -61,7 +65,7 @@ const Suggestions = (props) => {
                 {r.city}
               </HeaderSpan>
               <br />
-              {r.unitName}
+              <StyledSpan>{r.unitName}</StyledSpan>
               <br />
               <PolicySpan>
                 {r.unitPrice.split('.')[0]} {r.priceModifier}
@@ -82,8 +86,8 @@ const Suggestions = (props) => {
               </span>
             </Card.Meta>
           </Card.Content>
-        </Link>
-      </SuggestionCard>
+        </SuggestionCard>
+      </Link>
     </SuggestedItem>
   ))
   return <SuggestedList>{options}</SuggestedList>
