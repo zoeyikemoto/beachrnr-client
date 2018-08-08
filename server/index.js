@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const helpers = require('./helpers/search');
+const inventory = require('./helpers/listingdetails');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -13,6 +14,13 @@ app.get('/api/listing/:location', (req, res) => {
   const queryString = req.url.split('/')[req.url.split('/').length - 1].toLowerCase();
 
   helpers.getSearchResult(queryString, (data) => {
+    res.send(data);
+  });
+});
+
+app.get('/api/rooms/:roomId', (req, res) => {
+  const listingId = req.params.roomId;
+  inventory.getListingById(listingId, (data) => {
     res.send(data);
   });
 });
