@@ -21,6 +21,7 @@ app.get('/api/listing/:location', (req, res) => {
 app.get('/api/rooms/:roomId', (req, res) => {
   const roomId = req.params.roomId;
   inventory.getListingById(roomId, (data) => {
+    console.log(data);
     res.send(data);
   });
 });
