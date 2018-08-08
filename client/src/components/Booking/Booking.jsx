@@ -1,106 +1,25 @@
 import React from 'react';
 import { Card, Divider, Button } from 'semantic-ui-react';
-import ReactStars from 'react-stars';
-import styled from 'styled-components';
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import '../../styles/booking.css';
-
-const VertAlignedStars = styled(ReactStars)`
-  display: inline-block;
-  vertical-align: middle;
-`;
-
-const SmallText = styled.span`
-  font-size: 12px;
-`;
-
-const BigText = styled.span`
-  font-size: 22px;
-`;
-
-const CardContainer = styled.div`
-  width: 376px;
-  margin: 3rem auto;
-`;
-
-const DropDown = styled.div`
-  border: 1px solid rgba(34, 36, 38, 0.1);
-  color: #757575;
-  font-size: 16px;
-  padding: 14px 11px 14px 14px;
-  position: relative;
-`;
-
-const Carat = styled.svg`
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  height: 16px;
-  width: 16px;
-  display: block;
-  fill: currentcolor;
-`;
-
-const GuestTypeWrapper = styled.div`
-  margin-bottom: 1rem;
-  user-select: none;
-`;
-
-const InlineBlock = styled.div`
-  display: inline-block
-`;
-
-const GuestTypeSection = InlineBlock.extend`
-  width: 50%;
-  vertical-align: middle;
-`;
-
-const GuestTypeName = GuestTypeSection.extend`
-  text-align: left;
-`;
-
-const GuestTypeCounter = GuestTypeSection.extend`
-  text-align: center;
-`;
-
-const GuestTypeCounterButton = InlineBlock.extend`
-  width: 40%;
-  height: 100%;
-  cursor: pointer;
-`;
-
-const AdultCounterDecrement = GuestTypeCounterButton.extend`
-  opacity: ${props => props.guestCount < 2 ? '0.5' : '1'};
-`;
-
-const AdultCounterIncrement = GuestTypeCounterButton.extend``;
-
-const ButtonCircle = InlineBlock.extend`
-  border: 1px solid green;
-  border-radius: 100%;
-  color: green;
-  width: 2rem;
-  height: 2rem;
-`;
-
-const VertAlignedSpan = styled.span`
-  vertical-align: middle;
-`;
-
-const GuestCount = InlineBlock.extend`
-  width: 20%
-`;
-
-const GuestSelect = styled(Card)`
-  position: absolute !important;
-  width: 100% !important;
-  left: 0;
-  border-top: 2px solid green !important;
-  border-radius: 0 !important;
-`;
+import { SmallText, BigText } from './../Styles/Booking/HelperStyles.jsx';
+import {
+  VertAlignedStars,
+  CardContainer,
+  DropDown,
+  Carat,
+  GuestTypeWrapper,
+  GuestTypeName,
+  GuestTypeCounter,
+  AdultCounterDecrement,
+  AdultCounterIncrement,
+  ButtonCircle,
+  VertAlignedSpan,
+  GuestCount,
+  GuestSelect
+} from './../Styles/Booking/BookingStyles.jsx';
 
 class Booking extends React.Component {
   constructor(props) {

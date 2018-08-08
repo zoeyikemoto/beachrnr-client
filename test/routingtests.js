@@ -11,6 +11,7 @@ const server = require('../server/index');
 
 describe('inventory service', function() {
   describe('#get()', function() {
+
     it.skip('should return 200 if an id match is found', function(done) {
       chai.request(server)
         .get('/rooms/2912000')
