@@ -75,7 +75,7 @@ class ReviewItem extends React.Component {
           <ReviewPersonGrid mobile={11} tablet={12} computer={12} largeScreen={13} widescreen={13}>
             <ReviewPerson>{this.props.user_name}</ReviewPerson>
             <br></br>
-            <ReviewPerson>{this.props.review_date}</ReviewPerson>
+            <ReviewPerson>{new Date(this.props.review_time).toLocaleString()}</ReviewPerson>
           </ReviewPersonGrid>
           <ReportGrid mobile={2} tablet={2} computer={2} largeScreen={2} widescreen={2}>
             <ReportModal/>
