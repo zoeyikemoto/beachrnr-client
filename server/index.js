@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const helpers = require('./helpers/search');
-const inventory = require('./helpers/listingdetails');
+const inventory = require('./helpers/inventory');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -19,8 +19,8 @@ app.get('/api/listing/:location', (req, res) => {
 });
 
 app.get('/api/rooms/:roomId', (req, res) => {
-  const listingId = req.params.roomId;
-  inventory.getListingById(listingId, (data) => {
+  const roomId = req.params.roomId;
+  inventory.getListingById(roomId, (data) => {
     res.send(data);
   });
 });
