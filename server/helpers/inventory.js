@@ -7,7 +7,7 @@ module.exports = {
   //     .then(response => callback(response.data))
   //     .catch(err => console.log(err));
   // }
-  getListingById: (roomId) => {
+  getListingById: (roomId, callback) => {
     const url = 'http://localhost:3004/rooms/' + roomId;
     axios({
       method: 'get',
@@ -15,7 +15,7 @@ module.exports = {
       responseType: 'json'
     })
     .then((response) => {
-      console.log(response.data);
+      callback(response.data);
     })
     .catch((error) => {
       console.log(error);
