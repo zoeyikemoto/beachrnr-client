@@ -7,6 +7,7 @@ import '../../styles/booking.css';
 import { SmallText, BigText } from './../Styles/Booking/HelperStyles.jsx';
 import { VertAlignedStars, CardContainer } from './../Styles/Booking/BookingStyles.jsx';
 import GuestSelector from './GuestSelector.jsx';
+import { bookedDates } from '../../data/mockedDataBooking.js';
 
 class Booking extends React.Component {
   constructor(props) {
@@ -19,13 +20,15 @@ class Booking extends React.Component {
       standardGuests: 1,
       infantGuests: 0,
       guestMenuOpen: false,
-      booked: false
+      booked: false,
+      blockedDates: bookedDates[props.listingId]
     };
 
     this.toggleGuestMenu = this.toggleGuestMenu.bind(this);
     this.incrementGuests = this.incrementGuests.bind(this);
     this.decrementGuests = this.decrementGuests.bind(this);
     this.book = this.book.bind(this);
+    this.isDayBlocked = this.isDayBlocked.bind(this);
   }
 
   toggleGuestMenu() {
@@ -54,6 +57,10 @@ class Booking extends React.Component {
     });
   }
 
+  isDayBlocked(day) {
+    return this.state.blockedDates[day.format('YYYYMMDD')];
+  }
+
   render() {
 
     let guestCount = this.state.standardGuests + ' guest';
@@ -78,13 +85,14 @@ class Booking extends React.Component {
               <br />
               <DateRangePicker
                 startDate={this.state.startDate}
-                startDateId="your_unique_start_date_id"
+                startDateId=""
                 endDate={this.state.endDate}
-                endDateId="your_unique_end_date_id"
+                endDateId=""
                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
                 focusedInput={this.state.focusedInput}
                 onFocusChange={focusedInput => this.setState({ focusedInput })}
                 numberOfMonths={1}
+                isDayBlocked={this.isDayBlocked}
               />
             </div>
             <Divider hidden />
