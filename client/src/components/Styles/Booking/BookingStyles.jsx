@@ -40,12 +40,12 @@ const InlineBlock = styled.div`
   display: inline-block
 `;
 
-export const GuestTypeSection = InlineBlock.extend`
+const GuestTypeSection = InlineBlock.extend`
   width: 50%;
   vertical-align: middle;
 `;
 
-const GuestTypeName = GuestTypeSection.extend`
+export const GuestTypeName = GuestTypeSection.extend`
   text-align: left;
 `;
 
