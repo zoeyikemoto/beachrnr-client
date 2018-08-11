@@ -1,6 +1,7 @@
 import React from 'react';
 // import { listings } from '../../data/mockedDataSearch';
 import Suggestions from './Suggestions.jsx'
+import HitsCount from './HitsCount.jsx'
 import api from '../../../utils/api';
 import { Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
@@ -23,7 +24,9 @@ class Search extends React.Component {
     super(props);
     this.state = {
       query: '',
-      results: []
+      results: [],
+      hitsCount: 0,
+      timeTaken: 0
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -33,12 +36,11 @@ class Search extends React.Component {
     let currentLocation = 'San Francisco';
     api.fetchListings(currentLocation)
     .then(results => {
-      let filteredResult = results.filter(listing => 
-        listing.city === currentLocation
-      );
       this.setState({
-        results: filteredResult,
-        query: currentLocation
+        results: results.data,
+        query: currentLocation,
+        hitsCount: results.count,
+        timeTaken: results.timeTaken
       })
     }, err => console.log(err));
   }
@@ -62,7 +64,9 @@ class Search extends React.Component {
     api.fetchListings(location)
     .then(results => {
       this.setState({
-        results: results
+        results: results.data,
+        hitsCount: results.count,
+        timeTaken: results.timeTaken
       })
     })
   }
@@ -80,6 +84,7 @@ class Search extends React.Component {
             />
           </Form.Field>
         </Div>
+        <HitsCount hitsCount={this.state.hitsCount} timeTaken={this.state.timeTaken} />
         {this.state.query === 'San Francisco' ? <HeaderDiv>Places to stay near you</HeaderDiv> : ''}
         {!this.state.query.length ? '' 
           : (this.state.results.length > 0 
