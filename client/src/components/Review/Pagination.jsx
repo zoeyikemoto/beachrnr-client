@@ -36,14 +36,22 @@ class Pagination extends React.Component {
   }
 
   componentWillMount() {
-    this.setPage(1);
+    if(this.props.fullReviewList && this.props.fullReviewList.length) {
+      this.setPage(1);
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.fullReviewList !== this.props.fullReviewList) {
+      this.setPage(1)
+    }
   }
 
   setPage(page) {
     var pager = this.getPager(this.props.fullReviewList, page, 5, 7);
     this.setState({
       pager: pager
-    })
+    });
     var itemList = this.props.fullReviewList.slice(pager.startIndex, pager.endIndex+1);
     this.props.onChange(itemList);
   }

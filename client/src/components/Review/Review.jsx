@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactStars from 'react-stars';
-import {RatingNReviewcount, Ratings, FullReviewList} from '../../data/mock-data-review.js';
 import ReviewItem from './Reviewitem.jsx';
 import styled from 'styled-components';
 import Pagination from './Pagination.jsx';
@@ -15,7 +14,6 @@ const ReviewCount = styled.h2`
 
 const ReviewStar = styled(ReactStars)`
   display: inline-block;
-  margin-left: 10px;
 `;
 
 const ReviewPanel = styled.div`
