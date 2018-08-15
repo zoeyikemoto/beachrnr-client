@@ -10,8 +10,12 @@ const Div = styled.div`
   width: 50%;
   margin: 3% auto;
   padding-top: 25px;
+  color: #696969 !important;
 `;
 
+const MessageDiv = styled(Div)`
+  font-size: 20px;
+`
 const HeaderDiv = styled(Header)`
   font-size: 25px !important;
   margin-left: 20px !important;
@@ -87,13 +91,13 @@ class Search extends React.Component {
         <HitsCount hitsCount={this.state.hitsCount} timeTaken={this.state.timeTaken} />
         {this.state.query === 'San Francisco' ? <HeaderDiv>Places to stay near you</HeaderDiv> : ''}
         {!this.state.query.length ? '' 
-          : (this.state.results.length > 0 
-            ? 
-              <Suggestions results={this.state.results} /> 
-            : 
-              <Div> 
-                No result found for the search criteria 
-            </Div>
+        : (this.state.results.length > 0 
+          ? 
+            <Suggestions results={this.state.results} /> 
+          : 
+            <MessageDiv> 
+              No results found for {this.state.query}
+            </MessageDiv>
           )
         }
       </Form>

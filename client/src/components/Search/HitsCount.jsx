@@ -5,6 +5,7 @@ import { Divider } from 'semantic-ui-react';
 const StyledP = styled.p`
   text-align: right;
   padding-right: 2rem;
+  color: #696969 !important;
 `;
 
 const HitsCount = (props) => {
