@@ -3,6 +3,7 @@ const chaiHttp = require('chai-http');
 const assert = chai.assert;
 const expect = chai.expect;
 const should = chai.should();
+const axios = require('axios');
 
 chai.use(chaiHttp);
 
@@ -14,25 +15,25 @@ describe('inventory service', function() {
 
     it.skip('should return 200 if an id match is found', function(done) {
       chai.request(server)
-        .get('/rooms/2912000')
+        .get('/api/rooms/2912000')
         .end(function (err, res) {
           expect(res).to.have.status(200);
           done();
         });
     });
-    it.skip('should return 404 if there is no id match', function(done) {
+    it.skip('should return the listing object with the matching id', function(done) {
       chai.request(server)
-        .get('/rooms/1337')
+        .get('/api/rooms/2912000')
         .end(function (err, res) {
-          expect(res).to.have.status(404);
+          expect(res.unitName).to.equal("Beautiful Guest Suite for 2");
           done();
         });
     });
-    it.skip('should return the listing object with the matching id', function(done) {
+    it('should return 404 if there is no id match', function(done) {
       chai.request(server)
-        .get('/rooms/2912000')
+        .get('/api/rooms/1337')
         .end(function (err, res) {
-          expect(res.body.unitName).to.equal("Beautiful Guest Suite for 2");
+          expect(err).to.have.status(404);
           done();
         });
     });

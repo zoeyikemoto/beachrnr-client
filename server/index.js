@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const helpersSearch = require('./helpers/search');
 const helpersReview = require('./helpers/review.js');
+const inventory = require('./helpers/inventory');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -45,6 +46,14 @@ app.get('/rooms/:id/reviews/ratings', (req, res) => {
     res.send(data);
   })
 
+});
+
+app.get('/api/rooms/:roomId', (req, res) => {
+  const roomId = req.params.roomId;
+  inventory.getListingById(roomId, (data) => {
+    console.log(data);
+    res.send(data);
+  });
 });
 
 app.get('/*', (req, res) => {
