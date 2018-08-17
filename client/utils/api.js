@@ -31,6 +31,13 @@ module.exports = {
       .then(response =>
         response.data)
       .catch(err => console.log(err));
-  }
+  },
 
+  fetchById: (listingId) => {
+    let encodedUri = encodeURI(`/api/rooms/${listingId}`);
+    return axios.get(encodedUri)
+      .then(response =>
+        response.data)
+      .catch(err => console.log(err));
+  }
 };
