@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import style from '../../styles/listingdetails.css';
-import { details } from '../../data/mockpagedetail.js';
 import styled from 'styled-components';
-import api from '../../../utils/api';
+import api from '../../../utils/api.js';
 
 const MainImage = styled.div`
 
@@ -52,7 +51,6 @@ const pluralize = function(num, word){
     return num + " " + word + "s";
   }
 };
-
 
 const ListingPage = (props) => {
     const data = props.currentListing;
