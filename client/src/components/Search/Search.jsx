@@ -88,7 +88,10 @@ class Search extends React.Component {
             />
           </Form.Field>
         </Div>
-        <HitsCount hitsCount={this.state.hitsCount} timeTaken={this.state.timeTaken} />
+        {this.state.query.length ? 
+          <HitsCount hitsCount={this.state.hitsCount} timeTaken={this.state.timeTaken} /> 
+          : ''
+        }
         {this.state.query === 'San Francisco' ? <HeaderDiv>Places to stay near you</HeaderDiv> : ''}
         {!this.state.query.length ? '' 
         : (this.state.results.length > 0 
