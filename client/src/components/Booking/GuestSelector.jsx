@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Divider, Button } from 'semantic-ui-react';
+import { Card, Divider } from 'semantic-ui-react';
 import { SmallText } from './../Styles/Booking/HelperStyles.jsx';
 import {
   DropDown,
@@ -12,7 +12,9 @@ import {
   ButtonCircle,
   VertAlignedSpan,
   GuestCount,
-  GuestSelect
+  GuestSelect,
+  BookButton,
+  BookedMark
 } from './../Styles/Booking/BookingStyles.jsx';
 
 const GuestSelector = (props) => (
@@ -55,12 +57,12 @@ const GuestSelector = (props) => (
       }
     </DropDown>
     <Divider hidden />
-    <Button onClick={props.book} style={{backgroundColor: !props.booked ? '#FF5A5F' : '#21ba45', color: 'white'}} size='huge' fluid>
+    <BookButton onClick={props.book} size='huge' fluid booked={props.booked ? 1 : 0}>
       {!props.booked
         ? 'Book'
-        : <span style={{fontSize: '36px', lineHeight: '12px', verticalAlign: 'sub'}}>✓</span>
+        : <BookedMark>✓</BookedMark>
       }
-    </Button>
+    </BookButton>
   </div>
 );
 

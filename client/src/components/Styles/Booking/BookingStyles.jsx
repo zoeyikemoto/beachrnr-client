@@ -1,5 +1,5 @@
 import ReactStars from 'react-stars';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 export const VertAlignedStars = styled(ReactStars)`
@@ -87,4 +87,15 @@ export const GuestSelect = styled(Card)`
   left: 0;
   border-top: 2px solid green !important;
   border-radius: 0 !important;
+`;
+
+export const BookButton = styled(Button)`
+  background-color: ${props => !props.booked ? '#FF5A5F' : '#21ba45'} !important;
+  color: white !important;
+`;
+
+export const BookedMark = styled.span`
+  font-size: 36px;
+  line-height: 12px;
+  vertical-align: sub;
 `;
