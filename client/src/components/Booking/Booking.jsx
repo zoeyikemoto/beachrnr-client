@@ -16,7 +16,8 @@ class Booking extends React.Component {
       startDate: null,
       endDate: null,
       focusedInput: null,
-      standardGuests: 1,
+      adultGuests: 1,
+      childGuests: 0,
       infantGuests: 0,
       guestMenuOpen: false,
       booked: false
@@ -36,22 +37,26 @@ class Booking extends React.Component {
   }
 
   toggleGuestMenu() {
-    this.setState({
-      guestMenuOpen: !this.state.guestMenuOpen
-    });
+    this.setState(prevState => ({
+      guestMenuOpen: !prevState.guestMenuOpen
+    }));
   }
 
-  incrementGuests() {
-    this.setState({
-      standardGuests: ++this.state.standardGuests
-    });
+  incrementGuests(guestType) {
+    this.setState(prevState => ({
+      [guestType]: ++prevState[guestType]
+    }));
   }
 
-  decrementGuests() {
-    if (this.state.standardGuests > 1) {
-      this.setState({
-        standardGuests: --this.state.standardGuests
-      });
+  decrementGuests(guestType) {
+    if (guestType === 'adultGuests' && this.state.adultGuests > 1) {
+      this.setState(prevState => ({
+        adultGuests: --prevState.adultGuests
+      }));
+    } else if (guestType !== 'adultGuests' && this.state[guestType] > 0) {
+      this.setState(prevState => ({
+        [guestType]: --prevState[guestType]
+      }));
     }
   }
   
@@ -66,9 +71,9 @@ class Booking extends React.Component {
   }
 
   render() {
-
-    let guestCount = this.state.standardGuests + ' guest';
-    guestCount += this.state.standardGuests > 1 ? 's' : '';
+    const standardGuests = this.state.adultGuests + this.state.childGuests;
+    let guestCount = standardGuests + ' guest';
+    guestCount += standardGuests > 1 ? 's' : '';
     guestCount += this.state.infantGuests ? `, ${this.state.infantGuests} infant` : '';
     guestCount += this.state.infantGuests ? 's' : '';
 
@@ -102,7 +107,9 @@ class Booking extends React.Component {
             <Divider hidden />
             <GuestSelector
               guestMenuOpen={this.state.guestMenuOpen}
-              standardGuests={this.state.standardGuests}
+              adultGuests={this.state.adultGuests}
+              childGuests={this.state.childGuests}
+              infantGuests={this.state.infantGuests}
               booked={this.state.booked}
               guestCount={guestCount}
               toggleGuestMenu={this.toggleGuestMenu}

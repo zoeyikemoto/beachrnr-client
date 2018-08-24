@@ -9,6 +9,8 @@ import {
   GuestTypeCounter,
   AdultCounterDecrement,
   AdultCounterIncrement,
+  CounterDecrement,
+  CounterIncrement,
   ButtonCircle,
   VertAlignedSpan,
   GuestCount,
@@ -36,19 +38,55 @@ const GuestSelector = (props) => (
               <GuestTypeWrapper>
                 <GuestTypeName>Adults</GuestTypeName>
                 <GuestTypeCounter>
-                  <AdultCounterDecrement onClick={props.decrementGuests} guestCount={props.standardGuests} >
+                  <AdultCounterDecrement onClick={() => props.decrementGuests('adultGuests')} guestCount={props.adultGuests} >
                     <ButtonCircle>
                       <VertAlignedSpan>-</VertAlignedSpan>
                     </ButtonCircle>
                   </AdultCounterDecrement>
                   <GuestCount>
-                    <VertAlignedSpan>{props.standardGuests}</VertAlignedSpan>
+                    <VertAlignedSpan>{props.adultGuests}</VertAlignedSpan>
                   </GuestCount>
-                  <AdultCounterIncrement onClick={props.incrementGuests} >
+                  <AdultCounterIncrement onClick={() => props.incrementGuests('adultGuests')} >
                     <ButtonCircle>
                       <VertAlignedSpan>+</VertAlignedSpan>
                     </ButtonCircle>
                   </AdultCounterIncrement>
+                </GuestTypeCounter>
+              </GuestTypeWrapper>
+              <GuestTypeWrapper>
+                <GuestTypeName>Children</GuestTypeName>
+                <GuestTypeCounter>
+                  <CounterDecrement onClick={() => props.decrementGuests('childGuests')} guestCount={props.childGuests} >
+                    <ButtonCircle>
+                      <VertAlignedSpan>-</VertAlignedSpan>
+                    </ButtonCircle>
+                  </CounterDecrement>
+                  <GuestCount>
+                    <VertAlignedSpan>{props.childGuests}</VertAlignedSpan>
+                  </GuestCount>
+                  <CounterIncrement onClick={() => props.incrementGuests('childGuests')} >
+                    <ButtonCircle>
+                      <VertAlignedSpan>+</VertAlignedSpan>
+                    </ButtonCircle>
+                  </CounterIncrement>
+                </GuestTypeCounter>
+              </GuestTypeWrapper>
+              <GuestTypeWrapper>
+                <GuestTypeName>Infants</GuestTypeName>
+                <GuestTypeCounter>
+                  <CounterDecrement onClick={() => props.decrementGuests('infantGuests')} guestCount={props.infantGuests} >
+                    <ButtonCircle>
+                      <VertAlignedSpan>-</VertAlignedSpan>
+                    </ButtonCircle>
+                  </CounterDecrement>
+                  <GuestCount>
+                    <VertAlignedSpan>{props.infantGuests}</VertAlignedSpan>
+                  </GuestCount>
+                  <CounterIncrement onClick={() => props.incrementGuests('infantGuests')} >
+                    <ButtonCircle>
+                      <VertAlignedSpan>+</VertAlignedSpan>
+                    </ButtonCircle>
+                  </CounterIncrement>
                 </GuestTypeCounter>
               </GuestTypeWrapper>
             </Card.Content>

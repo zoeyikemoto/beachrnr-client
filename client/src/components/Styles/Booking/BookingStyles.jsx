@@ -32,8 +32,11 @@ export const Carat = styled.svg`
 `;
 
 export const GuestTypeWrapper = styled.div`
-  margin-bottom: 1rem;
   user-select: none;
+
+  :not(:last-child) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const InlineBlock = styled.div`
@@ -64,6 +67,12 @@ export const AdultCounterDecrement = GuestTypeCounterButton.extend`
 `;
 
 export const AdultCounterIncrement = GuestTypeCounterButton.extend``;
+
+export const CounterDecrement = GuestTypeCounterButton.extend`
+  opacity: ${props => props.guestCount < 1 ? '0.5' : '1'};
+`;
+
+export const CounterIncrement = GuestTypeCounterButton.extend``;
 
 export const ButtonCircle = InlineBlock.extend`
   border: 1px solid green;
