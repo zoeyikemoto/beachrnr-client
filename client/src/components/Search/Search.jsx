@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 // import { listings } from '../../data/mockedDataSearch';
 import Suggestions from './Suggestions.jsx'
 import HitsCount from './HitsCount.jsx'
@@ -15,7 +16,8 @@ const Div = styled.div`
 
 const MessageDiv = styled(Div)`
   font-size: 20px;
-`
+`;
+
 const HeaderDiv = styled(Header)`
   font-size: 25px !important;
   margin-left: 20px !important;
@@ -48,7 +50,7 @@ class Search extends React.Component {
       })
     }, err => console.log(err));
   }
- 
+
   handleInputChange() {
     this.setState({
       query: this.search.value
@@ -83,22 +85,22 @@ class Search extends React.Component {
             <input style={ {backgroundImage: 'url(searchIcon.png)', backgroundPosition: 'left center', backgroundRepeat: 'no-repeat', paddingLeft: '40px', height: '48px'} }
               placeholder='Destination...'
               ref={input => this.search = input}
-              onChange={this.handleInputChange}
-              onKeyPress={(e)=>{this.handleKeyPress(e, this.handleInputChange)}}
+              onChange={_.debounce(this.handleInputChange, 500)}
+              onKeyPress={(e)=>{this.handleKeyPress(e, _.debounce(this.handleInputChange, 500))}}
             />
           </Form.Field>
         </Div>
-        {this.state.query.length ? 
-          <HitsCount hitsCount={this.state.hitsCount} timeTaken={this.state.timeTaken} /> 
+        {this.state.query.length ?
+          <HitsCount hitsCount={this.state.hitsCount} timeTaken={this.state.timeTaken} />
           : ''
         }
         {this.state.query === 'San Francisco' ? <HeaderDiv>Places to stay near you</HeaderDiv> : ''}
-        {!this.state.query.length ? '' 
-        : (this.state.results.length > 0 
-          ? 
-            <Suggestions results={this.state.results} /> 
-          : 
-            <MessageDiv> 
+        {!this.state.query.length ? ''
+        : (this.state.results.length > 0
+          ?
+            <Suggestions results={this.state.results} />
+          :
+            <MessageDiv>
               No results found for {this.state.query}
             </MessageDiv>
           )
