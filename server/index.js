@@ -19,35 +19,6 @@ app.get('/api/listing/:location', (req, res) => {
   });
 });
 
-
-app.get('/rooms/:id/reviews/content', (req, res) => {
-  let listingId = req.params.id;
-
-  helpersReview.fetchReviews(listingId, data=> {
-    res.send(data);
-  })
-
-});
-
-
-app.get('/rooms/:id/reviews/ratingnreviewcount', (req, res) => {
-  let listingId = req.params.id;
-
-  helpersReview.fetchRatingNReviewCount(listingId, data=> {
-    res.send(data);
-  })
-
-});
-
-app.get('/rooms/:id/reviews/ratings', (req, res) => {
-  let listingId = req.params.id;
-
-  helpersReview.fetchRatings(listingId, data=> {
-    res.send(data);
-  })
-
-});
-
 app.get('/api/rooms/:roomId', (req, res) => {
   const roomId = req.params.roomId;
   inventory.getListingById(roomId, (data) => {
