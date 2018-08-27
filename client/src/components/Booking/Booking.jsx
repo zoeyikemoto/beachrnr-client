@@ -61,9 +61,34 @@ class Booking extends React.Component {
   }
   
   book() {
-    this.setState({
-      booked: !this.state.booked
-    });
+    const body = {
+      dates: {
+        startDate: this.state.startDate,
+        endDate: this.state.endDate
+      },
+      guests: {
+        adults: this.state.adultGuests,
+        children: this.state.childGuests,
+        infants: this.state.infantGuests
+      }
+    };
+
+    const init = {
+      method: 'POST',
+      mode: 'cors', 
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(body)
+    };
+    
+    fetch(`http://ec2-54-215-179-47.us-west-1.compute.amazonaws.com:3000/api/bookings/${this.props.listingId}`, init)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ booked: !this.state.booked })
+      })
+      .catch(console.error);
   }
 
   isDayBlocked(day) {
