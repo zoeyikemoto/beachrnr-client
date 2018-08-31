@@ -25,6 +25,16 @@ const HeaderDiv = styled(Header)`
   font-weight: bold;
 `;
 
+const ClearButton = styled.a`
+  position: absolute !important;
+  top: 50% !important;
+  right: 10px !important;
+  margin-top: -10px !important;
+  font-size: 26px !important;
+  cursor: pointer !important;
+  color: #C0C0C0;
+`;
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +46,7 @@ class Search extends React.Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -66,6 +77,14 @@ class Search extends React.Component {
     }
   }
 
+  async onButtonClick(selector) {
+    await selector.focus();
+    selector.value = '';
+    this.setState({
+      results: this.state.results
+    })
+  }
+
   getInfo(location) {
     api.fetchListings(location)
     .then(results => {
@@ -78,16 +97,24 @@ class Search extends React.Component {
   }
 
   render() {
+    let inputQuery = document.querySelector('#searchbox');
     return (
       <Form>
         <Div>
-          <Form.Field>
+          <Form.Field style= {{ position: 'relative'}}>
             <input style={ {backgroundImage: 'url(searchIcon.png)', backgroundPosition: 'left center', backgroundRepeat: 'no-repeat', paddingLeft: '40px', height: '48px'} }
               placeholder='Destination...'
+              id='searchbox'
               ref={input => this.search = input}
               onChange={_.debounce(this.handleInputChange, 500)}
               onKeyPress={(e)=>{this.handleKeyPress(e, _.debounce(this.handleInputChange, 500))}}
             />
+            { inputQuery && inputQuery.value !== null && inputQuery.value !== '' ?
+              (<ClearButton id='close' onClick={() => this.onButtonClick(inputQuery)} className='close'>
+                &times;
+              </ClearButton>)
+              : ''
+            }
           </Form.Field>
         </Div>
         {this.state.query.length ?
