@@ -7,6 +7,9 @@ import Pagination from './Pagination.jsx';
 import {Grid} from 'semantic-ui-react';
 import api from '../../../utils/api.js';
 
+const ReviewComponent = styled.div`
+  margin-top: 5em;
+`;
 
 const ReviewCount = styled.h2`
   display: inline-block;
@@ -119,7 +122,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div>
+      <ReviewComponent>
         <Offset id='reviewtop' name='reviewtop' />
         <ReviewPanel>
           <ReviewCount>{this.state.ratingNReviewcount['review_count']} Reviews</ReviewCount>
@@ -160,7 +163,7 @@ class Review extends React.Component {
         <PagPanel>
           <Pagination fullReviewList={this.state.fullReviewList} onChange={this.onChange}/>
         </PagPanel>
-      </div>
+      </ReviewComponent>
       )
   }
 };

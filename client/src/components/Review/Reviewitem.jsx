@@ -69,10 +69,10 @@ class ReviewItem extends React.Component {
     return (
       <ReviewItemDiv>
         <Grid>
-          <AvatarGrid mobile={3} tablet={2} computer={2} largeScreen={1} widescreen={1}>
+          <AvatarGrid mobile={1} tablet={1} computer={1} largeScreen={2} widescreen={2}>
             <ReviewItemAvatar src={this.props.user_avatar} />
           </AvatarGrid>
-          <ReviewPersonGrid mobile={11} tablet={12} computer={12} largeScreen={13} widescreen={13}>
+          <ReviewPersonGrid mobile={13} tablet={13} computer={13} largeScreen={12} widescreen={12}>
             <ReviewPerson>{this.props.user_name}</ReviewPerson>
             <br></br>
             <ReviewPerson>{new Date(this.props.review_time).toLocaleString()}</ReviewPerson>
