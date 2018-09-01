@@ -54,6 +54,16 @@ const StarsGrid = styled(Grid.Column)`
   text-align: right !important;
 `;
 
+const Offset = styled.div`
+  :before {
+    display: block;
+    content: " ";
+    height: 90px;
+    margin-top: -90px;
+    visibility: hidden;
+  }
+`;
+
 class Review extends React.Component {
   constructor(props) {
     super(props);
@@ -110,7 +120,7 @@ class Review extends React.Component {
   render() {
     return (
       <div>
-         <a name='reviewtop'></a>
+        <Offset id='reviewtop' name='reviewtop' />
         <ReviewPanel>
           <ReviewCount>{this.state.ratingNReviewcount['review_count']} Reviews</ReviewCount>
           <ReviewStar count={5} size={30} value ={5} color2={'#137269'} edit={false}></ReviewStar>
