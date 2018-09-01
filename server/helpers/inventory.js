@@ -8,7 +8,7 @@ module.exports = {
   //     .catch(err => console.log(err));
   // }
   getListingById: (roomId, callback) => {
-    const url = 'http://localhost:3004/rooms/' + roomId;
+    const url = 'http://ec2-18-223-136-21.us-east-2.compute.amazonaws.com:3004/inventory/2912000';
     axios({
       method: 'get',
       url: url,

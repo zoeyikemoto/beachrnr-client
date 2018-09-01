@@ -37,10 +37,7 @@ class MainLayout extends Component {
     });
   }
 
-  render() {
-    // let currentListing = details.find((listing) => {
-    //   return listing.id+"" === this.props.match.params.id;
-    // });
+  componentDidMount() {
     let listingId = this.props.match.params.id;
     api.fetchById(listingId)
     .then(data => {
@@ -48,6 +45,9 @@ class MainLayout extends Component {
         currentListing: data
       })
     }, err => console.log(err));
+  }
+
+  render() {
 
     if(this.state.currentListing) {
       return (

@@ -97,16 +97,12 @@ const ListingPage = (props) => {
           <Description>
             <h3>Amenities</h3>
             <ListBlock>
-              {data.amenities.map(function(amenity){
-                return (<ListItem>{amenity}</ListItem>);
-              })}
+              <ListItem>{data.amenities}</ListItem>
             </ListBlock>
           </Description>
           <Description>
             <ListBlock>
-              {data.house_rules.map(function(rule){
-                return (<ListItem>{rule}</ListItem>);
-              })}
+              <ListItem>{data.house_rules}</ListItem>
             </ListBlock>
           </Description>
           <Description>
