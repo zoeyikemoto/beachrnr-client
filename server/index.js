@@ -27,21 +27,6 @@ app.get('/api/rooms/:roomId', (req, res) => {
   });
 });
 
-app.get('/api/rooms/:roomId', (req, res) => {
-  const roomId = req.params.roomId;
-  inventory.getListingById(roomId, (data) => {
-    console.log(data);
-    res.send(data);
-  });
-});
-
-app.get('/api/rooms/:roomId', (req, res) => {
-  const roomId = req.params.roomId;
-  inventory.getListingById(roomId, (data) => {
-    res.send(data);
-  });
-});
-
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'), (err) => {
     if (err) {
